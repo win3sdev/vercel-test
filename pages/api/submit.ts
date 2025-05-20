@@ -168,6 +168,7 @@ export default async function handler(
       ip: ip,
       userAgent: userAgent,
     };
+	console.log(surveyData);
     const check_info = checkInputSecurity(surveyData);
     if (check_info["isSafe"]) {
       const result = await prisma.schoolSurvey.create({
