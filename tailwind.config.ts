@@ -24,6 +24,14 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        sans: [
+          "var(--font-roboto)",
+          "Noto Sans SC",
+          "Noto Sans TC",
+          "sans-serif",
+        ],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

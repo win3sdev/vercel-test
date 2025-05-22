@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_SC, Noto_Sans_TC, Noto_Serif_SC, Roboto } from "next/font/google"
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { locales } from "@/i18n.config";
@@ -16,15 +17,49 @@ import Header from "@/app/components/Header";
 import MouseTracking from "@/app/components/MouseTracking";
 
 // 字体
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
+
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  style: "normal",
+  preload: true,
+  variable: "--font-roboto",
+  display: "swap",
   subsets: ["latin"],
-});
+})
+
+const notoSc = Noto_Sans_SC({
+  weight: ["300", "400", "500", "700"],
+  style: "normal",
+  preload: false,
+  variable: "--font-noto-sc",
+  display: "swap",
+})
+
+const notoTc = Noto_Sans_TC({
+  weight: ["300", "400", "500", "700"],
+  style: "normal",
+  preload: false,
+  variable: "--font-noto-tc",
+  display: "swap",
+})
+
+const notoSerifSc = Noto_Serif_SC({
+  weight: ["400", "700", "900"],
+  style: "normal",
+  preload: false,
+  variable: "--font-noto-serif-sc",
+  display: "swap",
+})
+
 
 // 动态 metadata
 export async function generateMetadata({
@@ -79,24 +114,31 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased selection:bg-blue-500/10 selection:text-blue-500 dark:selection:bg-blue-400/10 dark:selection:text-blue-400`}
+        className={`${roboto.variable} ${notoSc.variable} ${notoTc.variable} ${notoSerifSc.variable}
+    min-h-screen bg-background font-sans antialiased 
+    text-[15px] tracking-tight
+    selection:bg-blue-500/20 selection:text-blue-700 
+    dark:selection:bg-blue-400/20 dark:selection:text-blue-300 overflow-x-hidden`}
       >
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <div className="relative flex min-h-screen flex-col">
-              {/* <ApiHealthChecker /> */}
-              {/* <MouseTracking /> */}
               <Header />
-              <div className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {/* <div className="flex-1 w-full mx-auto px-4 sm:px-6 lg:px-8 py-8"> */}
-                <main className="w-full prose prose-neutral dark:prose-invert max-w-none prose-headings:font-normal prose-h1:font-bold prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-img:rounded-xl prose-a:text-blue-500 hover:prose-a:text-blue-600 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-300">
+              <div className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-6.5 lg:px-8 py-8">
+                <main
+                  className="w-full prose prose-neutral dark:prose-invert 
+  max-w-none proseCustom"
+                >
                   {children}
                 </main>
               </div>
-              <footer className="w-full border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 backdrop-blur-sm">
+              <footer
+                className="w-full border-t border-neutral-200 dark:border-neutral-800 
+  bg-neutral-50/70 dark:bg-neutral-900/60 backdrop-blur-md shadow-inner"
+              >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                   <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
-                    <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 text-center sm:text-left">
                       © 2025 Li-DAO. All rights reserved.
                     </p>
                     <div className="flex items-center space-x-4">

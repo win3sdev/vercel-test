@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { SchoolDetailCard } from "@/app/components/SchoolDetailCard";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { MapPinIcon, GraduationCapIcon, ClockIcon } from "lucide-react";
 
 interface SchoolData {
   id: number;
@@ -197,7 +198,11 @@ export default function DisplayPage() {
 
   return (
     <div className="w-full py-8 px-2 max-w-[1920px] mx-auto">
-      <h1 className="text-3xl font-bold mb-8">{t("title")}</h1>
+      {/* <h1 className="text-3xl font-bold mb-8">{t("title")}</h1> */}
+      <div className="mb-8 text-center">
+        <h1 className="text-4xl font-bold">{t("title")}</h1>
+        {/* <p className="text-lg text-muted-foreground mt-2">{t("description")}</p> */}
+      </div>
 
       {/* 移动端搜索框 */}
       <div className="md:hidden space-y-4">
@@ -212,7 +217,7 @@ export default function DisplayPage() {
               }
             }}
             placeholder={t("schoolName")}
-            className="w-full px-4 py-2 pr-24 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-transparent"
+            className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
           />
           <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-2">
             <button
@@ -249,7 +254,7 @@ export default function DisplayPage() {
                     handleAdvancedFilterChange("province", e.target.value)
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-1.5 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
               <div>
@@ -263,7 +268,7 @@ export default function DisplayPage() {
                     handleAdvancedFilterChange("city", e.target.value)
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-1.5 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
               <div>
@@ -277,7 +282,7 @@ export default function DisplayPage() {
                     handleAdvancedFilterChange("grade", e.target.value)
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-1.5 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
               <div>
@@ -294,7 +299,7 @@ export default function DisplayPage() {
                     )
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-1.5 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
               <div>
@@ -311,7 +316,7 @@ export default function DisplayPage() {
                     )
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-1.5 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
               <div>
@@ -325,7 +330,7 @@ export default function DisplayPage() {
                     handleAdvancedFilterChange("suicideCases", e.target.value)
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-1.5 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
             </div>
@@ -499,7 +504,7 @@ export default function DisplayPage() {
           {data.map((item) => (
             <div
               key={item.id}
-              className="grid grid-cols-12 gap-2 p-2 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+              className="grid grid-cols-12 gap-2 p-2 mb-3 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:bg-blue-50 dark:hover:bg-blue-900 transition-colors"
             >
               <div className="truncate">{item.province}</div>
               <div className="truncate">{item.city}</div>
@@ -515,7 +520,7 @@ export default function DisplayPage() {
               <div>
                 <button
                   onClick={() => setSelectedSchool(item)}
-                  className="text-blue-500 hover:text-blue-600 transition-colors"
+                  className="w-full px-3 py-1 text-sm rounded bg-blue-500 text-white hover:bg-blue-600 transition-colors"
                 >
                   {t("viewDetails")}
                 </button>
@@ -534,8 +539,11 @@ export default function DisplayPage() {
               <div className="flex justify-between items-start">
                 <div>
                   <div className="font-medium text-lg">{item.schoolName}</div>
-                  <div className="text-sm text-neutral-500 dark:text-neutral-400">
-                    {item.city} | {item.grade}
+                  <div className="flex gap-2 items-center text-sm text-neutral-500 dark:text-neutral-400">
+                    <MapPinIcon className="w-4 h-4" />
+                    <span>
+                      {item.city} | {item.grade}
+                    </span>
                   </div>
                 </div>
                 <button
@@ -552,11 +560,19 @@ export default function DisplayPage() {
           ))}
         </div>
 
+          {/* 搜索无结果时建议展示“重新加载”按钮 */}
         {data.length === 0 && (
           <div className="text-center py-12 text-neutral-500 dark:text-neutral-400">
-            {t("noData")}
+            <p>{t("noData")}</p>
+            <button
+              onClick={() => fetchData(1)}
+              className="mt-4 px-4 py-2 text-sm rounded bg-blue-500 text-white hover:bg-blue-600"
+            >
+              {t("retry")}
+            </button>
           </div>
         )}
+
 
         {/* 分页控件 */}
         {data.length > 0 && (

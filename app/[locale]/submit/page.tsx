@@ -5,8 +5,10 @@ import { useTranslations } from "next-intl";
 import toast from "react-hot-toast";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useEffect } from "react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-// 中国省份列表
 const provinces = [
   "北京市",
   "天津市",
@@ -52,7 +54,6 @@ export default function SubmitPage() {
     const handleMouseMove = (e: MouseEvent) => {
       const now = Date.now();
       if (now - lastTime > 100) {
-        // 每100ms记录一次
         mouseDataRef.current.push(`move:${e.clientX},${e.clientY},${now}`);
         lastTime = now;
       }
@@ -73,7 +74,6 @@ export default function SubmitPage() {
     };
   }, []);
 
-  // 多语言
   const t = useTranslations("form");
 
   const [formData, setFormData] = useState({
@@ -107,12 +107,8 @@ export default function SubmitPage() {
       toast.error("请先通过验证码验证", { position: "top-center" });
       return;
     }
-
     setIsSubmitting(true);
-
-    // 将鼠标轨迹数据合并到 formData
     const trackData = mouseDataRef.current.join(";");
-
     try {
       const response = await fetch("/api/submit", {
         method: "POST",
@@ -123,7 +119,6 @@ export default function SubmitPage() {
           ...formData,
           mouseTrack: trackData,
           recaptchaToken,
-          // 不需要传递 status 字段，后端会处理
         }),
       });
 
@@ -146,7 +141,7 @@ export default function SubmitPage() {
           studentComments: "",
           mouseTrack: "",
         });
-        setRecaptchaToken(null); // 成功后清空 token
+        setRecaptchaToken(null);
         recaptchaRef.current?.reset();
       } else {
         setSubmitStatus("error");
@@ -176,13 +171,17 @@ export default function SubmitPage() {
 
   return (
     <div className="container py-8">
-      {/* <div className="container py-8 w-full mx-auto"> */}
-      <div className="">
-        <h1 className="text-3xl font-bold mb-2">{t("title")}</h1>
-        <p className="text-neutral-600 dark:text-neutral-400 mb-8">
-          {t("description")}
-        </p>
+      <div className="mb-8 text-center">
+        <h1 className="text-4xl font-bold">{t("title")}</h1>
+        <p className="text-lg text-muted-foreground mt-2">{t("description")}</p>
+      </div>
 
+      <div className="mb-6 p-4 rounded-lg border bg-muted/30 dark:bg-muted/10 text-sm text-muted-foreground">
+        <p>
+          我们非常重视您的隐私和数据安全。所有提交信息将严格保密，仅用于研究分析。
+        </p>
+      </div>
+      <div className="">
         <form onSubmit={handleSubmit} className="max-w-2xl space-y-6">
           {/* 省份 */}
           <div>

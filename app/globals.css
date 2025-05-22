@@ -17,6 +17,7 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
+  font-family: 'Roboto', 'Noto Sans SC', 'Noto Sans TC', sans-serif;
 }
 
 @layer base {
@@ -33,6 +34,7 @@ body {
 html {
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
+  font-family: 'Roboto', 'Noto Sans SC', 'Noto Sans TC', sans-serif;
 }
 
 /* Better focus outline */
@@ -78,3 +80,15 @@ html {
     background-position: 0% 50%;
   }
 }
+
+
+/* .proseCustom {
+  @apply prose-headings:font-medium
+          prose-h1:font-bold prose-h1:text-4xl
+          prose-h2:text-3xl
+          prose-h3:text-2xl
+          prose-h4:text-xl
+          prose-a:text-blue-500 hover:prose-a:text-blue-600
+          dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-300
+          prose-img:rounded-xl;
+} */

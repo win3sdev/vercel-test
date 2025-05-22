@@ -26,93 +26,67 @@ export default function Header() {
   const locale = pathname.split("/")[1];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // 当路由变化时关闭菜单
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  // 防止菜单打开时页面滚动
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
 
   const navigationLinks = [
-    {
-      href: `/${locale}/submit`,
-      label: t("navigation.submit"),
-      icon: PlusCircleIcon,
-    },
-    {
-      href: `/${locale}/display`,
-      label: t("navigation.display"),
-      icon: TableCellsIcon,
-    },
-    {
-      href: `/${locale}/charts`,
-      label: t("navigation.charts"),
-      icon: ChartBarIcon,
-    },
-    {
-      href: `/${locale}/map`,
-      label: t("navigation.map"),
-      icon: MapIcon,
-    },
+    { href: `/${locale}/submit`, label: t("navigation.submit"), icon: PlusCircleIcon },
+    { href: `/${locale}/display`, label: t("navigation.display"), icon: TableCellsIcon },
+    { href: `/${locale}/charts`, label: t("navigation.charts"), icon: ChartBarIcon },
+    { href: `/${locale}/map`, label: t("navigation.map"), icon: MapIcon },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      {/* <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8"> */}
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-shadow hover:shadow-md">
       <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
-          <Link
-            href={`/${locale}`}
-            className="mr-6 flex items-center space-x-3 group"
-          >
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 shadow-lg shadow-blue-500/25 transition-transform duration-200 group-hover:scale-110">
+          <Link href={`/${locale}`} className="mr-6 flex items-center space-x-3 group">
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 shadow-md transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
               <GlobeAltIcon className="h-5 w-5 text-white" />
             </div>
-            <span className="font-bold text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 mr-16">
+            <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 transition-all duration-300 ease-in-out group-hover:tracking-widest">
               {t("site.title")}
             </span>
           </Link>
-          {/* 桌面端导航 */}
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center space-x-4 text-sm font-medium">
             {navigationLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-bold transition-all duration-200 hover:text-foreground/80 flex items-center space-x-1.5 px-3 py-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50"
+                className="group flex items-center space-x-2 px-4 py-2 rounded-lg font-semibold text-neutral-700 dark:text-neutral-300 transition-all duration-200 hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-white"
               >
-                <link.icon className="h-4 w-4" />
-                <span>{link.label}</span>
+                <link.icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" />
+                <span className="transition-colors duration-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                  {link.label}
+                </span>
               </Link>
             ))}
           </nav>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
           <Link
             href="https://github.com/Li-DAO-Dev/project-restructure"
             target="_blank"
             rel="noreferrer"
-            className="flex w-9 h-9 items-center justify-center rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
+            className="flex w-9 h-9 items-center justify-center rounded-lg transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:scale-105"
           >
-            <GithubIcon className="h-5 w-5" />
+            <GithubIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
             <span className="sr-only">GitHub</span>
           </Link>
           <ThemeSwitcher />
           <LanguageSwitcher />
-          {/* 移动端菜单按钮 */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
+            className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-200 hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:scale-105"
           >
             {isMenuOpen ? (
               <XMarkIcon className="h-6 w-6" />
@@ -124,30 +98,29 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 移动端菜单遮罩层 */}
       <div
-        className={`fixed inset-0 z-50 md:hidden bg-black/40 backdrop-blur-sm transform transition-all duration-300 ease-in-out ${
+        className={`fixed inset-0 z-40 md:hidden bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${
           isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsMenuOpen(false)}
       >
-        {/* 移动端菜单面板 */}
         <div
-          className={`absolute right-4 top-[4.5rem] w-64 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-xl transform transition-transform duration-300 ease-in-out ${
+          className={`absolute right-4 top-[4.5rem] w-64 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-xl transition-transform duration-300 ease-in-out ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* 菜单内容 */}
-          <nav className="py-2 flex flex-col">
+          <nav className="py-3 px-2 flex flex-col space-y-1">
             {navigationLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-3 text-sm text-zinc-600 dark:text-zinc-300 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors flex items-center space-x-3"
+                className="group flex items-center space-x-3 px-4 py-3 rounded-lg text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               >
-                <link.icon className="h-5 w-5" />
-                <span>{link.label}</span>
+                <link.icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
+                <span className="transition-colors duration-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                  {link.label}
+                </span>
               </Link>
             ))}
           </nav>

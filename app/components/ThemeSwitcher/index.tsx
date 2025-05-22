@@ -16,9 +16,7 @@ export default function ThemeSwitcher() {
   }, []);
 
   // 避免服务端渲染时的不匹配
-  if (!mounted) {
-    return <div className="w-9 h-9" />;
-  }
+  if (!mounted) return null;
 
   return (
     <button
