@@ -163,12 +163,18 @@ export default async function handler(
       weeklyStudyHours: parseInt(formData.weeklyStudyHours),
       monthlyHolidays: parseInt(formData.monthlyHolidays),
       suicideCases: parseInt(formData.suicideCases),
+
+      // 新增字段也要转换类型
+      winterVacationDays: parseInt(formData.winterVacationDays),
+      winterTuitionTotal: parseInt(formData.winterTuitionTotal),
+
+      safetyKeyword: formData.safetyKeyword, // 字符串无需转换
       status: "pending",
       reviewComment: null,
       ip: ip,
       userAgent: userAgent,
     };
-	console.log(surveyData);
+    console.log(surveyData);
     const check_info = checkInputSecurity(surveyData);
     if (check_info["isSafe"]) {
       const result = await prisma.schoolSurvey.create({

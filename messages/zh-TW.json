@@ -46,7 +46,25 @@
     "grade": {
       "label": "年級",
       "placeholder": "請輸入您的年級",
-      "description": "您的年級"
+      "description": "您的年級",
+      "options": {
+        "grade1": "一年級",
+        "grade2": "二年級",
+        "grade3": "三年級",
+        "grade4": "四年級",
+        "grade5": "五年級",
+        "grade6": "六年級",
+        "grade7": "七年級／國一",
+        "grade8": "八年級／國二",
+        "grade9": "九年級／國三",
+        "grade10": "高一",
+        "grade11": "高二",
+        "grade12": "高三",
+        "grade13": "大一",
+        "grade14": "大二",
+        "grade15": "大三",
+        "grade16": "大四"
+      }
     },
     "schoolStartTime": {
       "label": "上學時間",
@@ -83,38 +101,38 @@
   },
   "display": {
     "title": "學校信息調查表",
-  "viewDetails": "查看詳情",
-  "noData": "暫無數據",
-  "province": "省份",
-  "city": "城市",
-  "district": "區縣",
-  "schoolName": "學校名稱",
-  "grade": "年級",
-  "studentComments": "學生評論",
-  "weeklyStudyHours": "每週在校學習小時數",
-  "monthlyHolidays": "每月假期天數",
-  "suicideCases": "2024年學生自殺數",
-  "createdAt": "提交時間",
-  "schoolStartTime": "上學時間",
-  "schoolEndTime": "放學時間",
-  "location": "地理位置",
-  "schoolSchedule": "作息時間",
-  "statistics": "統計數據",
-  "pagination": {
-    "prev": "上一頁",
-    "next": "下一頁",
-    "page": "第 {page} 頁",
-    "of": "共 {total} 頁",
-    "showing": "顯示 {start}-{end} 條，共 {total} 條"
+    "viewDetails": "查看詳情",
+    "noData": "暫無數據",
+    "province": "省份",
+    "city": "城市",
+    "district": "區縣",
+    "schoolName": "學校名稱",
+    "grade": "年級",
+    "studentComments": "學生評論",
+    "weeklyStudyHours": "每週在校學習小時數",
+    "monthlyHolidays": "每月假期天數",
+    "suicideCases": "2024年學生自殺數",
+    "createdAt": "提交時間",
+    "schoolStartTime": "上學時間",
+    "schoolEndTime": "放學時間",
+    "location": "地理位置",
+    "schoolSchedule": "作息時間",
+    "statistics": "統計數據",
+    "pagination": {
+      "prev": "上一頁",
+      "next": "下一頁",
+      "page": "第 {page} 頁",
+      "of": "共 {total} 頁",
+      "showing": "顯示 {start}-{end} 條，共 {total} 條"
+    },
+    "filter": {
+      "placeholder": "輸入篩選條件",
+      "min": "最小值",
+      "max": "最大值",
+      "apply": "應用篩選",
+      "clear": "清除篩選"
+    }
   },
-  "filter": {
-    "placeholder": "輸入篩選條件",
-    "min": "最小值",
-    "max": "最大值",
-    "apply": "應用篩選",
-    "clear": "清除篩選"
-  }
-},
   "map": {
     "locate": "定位",
     "reset": "重置",
@@ -127,4 +145,4 @@
     "schoolStartTime": "上學時間分佈",
     "schoolEndTime": "放學時間分佈"
   }
-} 
+}

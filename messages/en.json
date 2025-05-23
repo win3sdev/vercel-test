@@ -1,7 +1,7 @@
 {
   "metaTitle": "611 Study ICU.",
   "metaDescription": "611Study refers to the schedule of starting school at 6 a.m. and finishing at 11 p.m., with the phrase \"fall sick, end up in the ICU.\" This has become a widespread and often mandatory routine in many middle and high schools across China. Countless students suffer both physically and mentally under this system. Through this project, we aim to help Chinese students break free from this prison-like schedule and reclaim a healthy, happy childhood.",
-  
+
   "navigation": {
     "submit": "Submit Data",
     "display": "Display Data",
@@ -47,7 +47,25 @@
     "grade": {
       "label": "Grade",
       "placeholder": "Enter your grade",
-      "description": "Your current grade"
+      "description": "Your current grade",
+      "options": {
+        "grade1": "Grade 1",
+        "grade2": "Grade 2",
+        "grade3": "Grade 3",
+        "grade4": "Grade 4",
+        "grade5": "Grade 5",
+        "grade6": "Grade 6",
+        "grade7": "Grade 7 / Junior 1",
+        "grade8": "Grade 8 / Junior 2",
+        "grade9": "Grade 9 / Junior 3",
+        "grade10": "Grade 10 / Senior 1",
+        "grade11": "Grade 11 / Senior 2",
+        "grade12": "Grade 12 / Senior 3",
+        "grade13": "College Year 1",
+        "grade14": "College Year 2",
+        "grade15": "College Year 3",
+        "grade16": "College Year 4"
+      }
     },
     "schoolStartTime": {
       "label": "School Start Time",
@@ -128,5 +146,4 @@
     "reset": "Reset",
     "placeholder": "Map will be displayed here"
   }
-  
-} 
+}

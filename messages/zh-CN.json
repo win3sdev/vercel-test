@@ -46,7 +46,25 @@
     "grade": {
       "label": "年级",
       "placeholder": "请输入您的年级",
-      "description": "您的年级"
+      "description": "您的年级",
+      "options": {
+        "grade1": "一年级",
+        "grade2": "二年级",
+        "grade3": "三年级",
+        "grade4": "四年级",
+        "grade5": "五年级",
+        "grade6": "六年级",
+        "grade7": "七年级",
+        "grade8": "八年级",
+        "grade9": "九年级",
+        "grade10": "高一",
+        "grade11": "高二",
+        "grade12": "高三",
+        "grade13": "大一",
+        "grade14": "大二",
+        "grade15": "大三",
+        "grade16": "大四"
+      }
     },
     "schoolStartTime": {
       "label": "上学时间",
@@ -114,7 +132,6 @@
       "apply": "应用筛选",
       "clear": "清除筛选"
     }
-    
   },
   "map": {
     "locate": "定位",
@@ -128,4 +145,4 @@
     "schoolStartTime": "上学时间分布",
     "schoolEndTime": "放学时间分布"
   }
-} 
+}

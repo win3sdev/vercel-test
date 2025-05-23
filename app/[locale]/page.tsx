@@ -131,7 +131,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <footer className="text-center border-t pt-6 text-sm text-muted-foreground">
+      <footer className="text-center border-t pt-6 text-sm text-muted-foreground mt-24 bg-muted/30 dark:bg-muted/10 rounded-t-xl">
         <p>&copy; 2025 611Study.ICU. All rights reserved.</p>
       </footer>
     </div>

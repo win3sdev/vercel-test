@@ -8,54 +8,8 @@ import { useEffect } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-// import RegionSelector from "@/app/components/RegionSelector";
-
-const regionData = {
-  北京: {
-    市辖区: ["东城区", "西城区", "朝阳区"],
-  },
-  河北省: {
-    石家庄市: ["长安区", "桥西区", "新华区"],
-    唐山市: ["路南区", "路北区", "古冶区"],
-  },
-};
-
-const provinces = [
-  "北京市",
-  "天津市",
-  "河北省",
-  "山西省",
-  "内蒙古自治区",
-  "辽宁省",
-  "吉林省",
-  "黑龙江省",
-  "上海市",
-  "江苏省",
-  "浙江省",
-  "安徽省",
-  "福建省",
-  "江西省",
-  "山东省",
-  "河南省",
-  "湖北省",
-  "湖南省",
-  "广东省",
-  "广西壮族自治区",
-  "海南省",
-  "重庆市",
-  "四川省",
-  "贵州省",
-  "云南省",
-  "西藏自治区",
-  "陕西省",
-  "甘肃省",
-  "青海省",
-  "宁夏回族自治区",
-  "新疆维吾尔自治区",
-  "台湾省",
-  "香港特别行政区",
-  "澳门特别行政区",
-];
+// import RegionSelector from "@/app/components/RegionSelector"; // 地区级联菜单组件
+import regionData from "@/data/regionData"; // 地区数据
 
 export default function SubmitPage() {
   const mouseDataRef = useRef<string[]>([]);
@@ -100,6 +54,9 @@ export default function SubmitPage() {
     suicideCases: "",
     studentComments: "",
     mouseTrack: "",
+    winterVacationDays: "", // 新增字段
+    winterTuitionTotal: "", // 新增字段
+    safetyKeyword: "", // 新增字段
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -151,6 +108,9 @@ export default function SubmitPage() {
           suicideCases: "",
           studentComments: "",
           mouseTrack: "",
+          winterVacationDays: "", // 新增字段
+          winterTuitionTotal: "", // 新增字段
+          safetyKeyword: "", // 新增字段
         });
         setRecaptchaToken(null);
         recaptchaRef.current?.reset();
@@ -415,7 +375,7 @@ export default function SubmitPage() {
           </div>
 
           {/* 年级 */}
-          <div>
+          {/* <div>
             <label htmlFor="grade" className="block text-sm font-medium mb-1">
               {t("grade.label")}
             </label>
@@ -432,6 +392,42 @@ export default function SubmitPage() {
               className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
+          </div> */}
+          <div>
+            <label htmlFor="grade" className="block text-sm font-medium mb-1">
+              {t("grade.label")}
+            </label>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+              {t("grade.description")}
+            </p>
+            <select
+              id="grade"
+              name="grade"
+              value={formData.grade}
+              onChange={handleChange}
+              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            >
+              <option value="" disabled>
+                {t("grade.placeholder")}
+              </option>
+              <option value="grade1">{t("grade.options.grade1")}</option>
+              <option value="grade2">{t("grade.options.grade2")}</option>
+              <option value="grade3">{t("grade.options.grade3")}</option>
+              <option value="grade4">{t("grade.options.grade4")}</option>
+              <option value="grade5">{t("grade.options.grade5")}</option>
+              <option value="grade6">{t("grade.options.grade6")}</option>
+              <option value="grade7">{t("grade.options.grade7")}</option>
+              <option value="grade8">{t("grade.options.grade8")}</option>
+              <option value="grade9">{t("grade.options.grade9")}</option>
+              <option value="grade10">{t("grade.options.grade10")}</option>
+              <option value="grade11">{t("grade.options.grade11")}</option>
+              <option value="grade12">{t("grade.options.grade12")}</option>
+              <option value="grade13">{t("grade.options.grade13")}</option>
+              <option value="grade14">{t("grade.options.grade14")}</option>
+              <option value="grade15">{t("grade.options.grade15")}</option>
+              <option value="grade16">{t("grade.options.grade16")}</option>
+            </select>
           </div>
 
           {/* 上学时间 */}
@@ -521,6 +517,69 @@ export default function SubmitPage() {
               onChange={handleChange}
               placeholder={t("monthlyHolidays.placeholder")}
               min="0"
+              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          {/* 寒假放假天数 */}
+          <div>
+            <label
+              htmlFor="winterVacationDays"
+              className="block text-sm font-medium mb-1"
+            >
+              寒假放假天数
+            </label>
+            <input
+              type="number"
+              id="winterVacationDays"
+              name="winterVacationDays"
+              value={formData.winterVacationDays}
+              onChange={handleChange}
+              placeholder="请输入寒假放假天数"
+              min="0"
+              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          {/* 寒假补课收费总价 */}
+          <div>
+            <label
+              htmlFor="winterTuitionTotal"
+              className="block text-sm font-medium mb-1"
+            >
+              寒假补课收费总价（元）
+            </label>
+            <input
+              type="number"
+              step="0.01"
+              id="winterTuitionTotal"
+              name="winterTuitionTotal"
+              value={formData.winterTuitionTotal}
+              onChange={handleChange}
+              placeholder="请输入补课总费用"
+              min="0"
+              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          {/* 安全词 */}
+          <div>
+            <label
+              htmlFor="safetyKeyword"
+              className="block text-sm font-medium mb-1"
+            >
+              安全词（用于防止伪造）
+            </label>
+            <input
+              type="text"
+              id="safetyKeyword"
+              name="safetyKeyword"
+              value={formData.safetyKeyword}
+              onChange={handleChange}
+              placeholder="请输入安全词"
               className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
