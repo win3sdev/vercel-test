@@ -149,5 +149,8 @@
     "locate": "Locate",
     "reset": "Reset",
     "placeholder": "Map will be displayed here"
+  },
+   "contact": {
+    "title": "Join us"
   }
 }

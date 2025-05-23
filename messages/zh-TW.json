@@ -148,5 +148,8 @@
     "monthlyHolidays": "每月假期天數分佈",
     "schoolStartTime": "上學時間分佈",
     "schoolEndTime": "放學時間分佈"
+  },
+   "contact": {
+    "title": "加入我們"
   }
 }
