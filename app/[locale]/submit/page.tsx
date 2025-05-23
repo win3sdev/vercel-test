@@ -8,6 +8,17 @@ import { useEffect } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// import RegionSelector from "@/app/components/RegionSelector";
+
+const regionData = {
+  北京: {
+    市辖区: ["东城区", "西城区", "朝阳区"],
+  },
+  河北省: {
+    石家庄市: ["长安区", "桥西区", "新华区"],
+    唐山市: ["路南区", "路北区", "古冶区"],
+  },
+};
 
 const provinces = [
   "北京市",
@@ -184,7 +195,7 @@ export default function SubmitPage() {
       <div className="">
         <form onSubmit={handleSubmit} className="max-w-2xl space-y-6">
           {/* 省份 */}
-          <div>
+          {/* <div>
             <label
               htmlFor="province"
               className="block text-sm font-medium mb-1"
@@ -209,10 +220,10 @@ export default function SubmitPage() {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
 
           {/* 城市 */}
-          <div>
+          {/* <div>
             <label htmlFor="city" className="block text-sm font-medium mb-1">
               {t("city.label")}
             </label>
@@ -229,10 +240,10 @@ export default function SubmitPage() {
               className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
-          </div>
+          </div> */}
 
           {/* 区县 */}
-          <div>
+          {/* <div>
             <label
               htmlFor="district"
               className="block text-sm font-medium mb-1"
@@ -252,6 +263,132 @@ export default function SubmitPage() {
               className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
+          </div> */}
+
+          {/* 地区级联选择器 */}
+          {/* <div>
+            <label className="block text-sm font-medium mb-1">
+              {t("region.label")}
+            </label>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+              {t("region.description")}
+            </p>
+            <RegionSelector
+              value={{
+                province: formData.province,
+                city: formData.city,
+                district: formData.district,
+              }}
+              onChange={(val) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  province: val.province,
+                  city: val.city,
+                  district: val.district,
+                }))
+              }
+            />
+          </div> */}
+
+          {/* 不封装 */}
+          {/* 地区选择（省/市/区县） */}
+          <div>
+            <label className="block text-sm font-medium mb-1">
+              {t("province.label")}
+            </label>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+              {t("province.description")}
+            </p>
+
+            {/* 省份 */}
+            <select
+              id="province"
+              name="province"
+              value={formData.province}
+              onChange={(e) => {
+                const selectedProvince = e.target.value;
+                setFormData((prev) => ({
+                  ...prev,
+                  province: selectedProvince,
+                  city: "",
+                  district: "",
+                }));
+              }}
+              className="mb-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            >
+              <option value="">{t("province.placeholder")}</option>
+              {Object.keys(regionData).map((province) => (
+                <option key={province} value={province}>
+                  {province}
+                </option>
+              ))}
+            </select>
+
+            {/* 城市 */}
+            <label className="block text-sm font-medium mb-1">
+              {t("city.label")}
+            </label>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+              {t("city.description")}
+            </p>
+            <select
+              id="city"
+              name="city"
+              value={formData.city}
+              onChange={(e) => {
+                const selectedCity = e.target.value;
+                setFormData((prev) => ({
+                  ...prev,
+                  city: selectedCity,
+                  district: "",
+                }));
+              }}
+              disabled={!formData.province}
+              className="mb-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            >
+              <option value="">{t("city.placeholder")}</option>
+              {formData.province &&
+                Object.keys(regionData[formData.province] || {}).map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+            </select>
+
+            {/* 区县 */}
+            <label className="block text-sm font-medium mb-1">
+              {t("district.label")}
+            </label>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+              {t("district.description")}
+            </p>
+            <select
+              id="district"
+              name="district"
+              value={formData.district}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  district: e.target.value,
+                }))
+              }
+              disabled={!formData.city}
+              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            >
+              <option value="">{t("district.placeholder")}</option>
+              {formData.province &&
+                formData.city &&
+                (regionData[formData.province]?.[formData.city] || []).map(
+                  (district) => (
+                    <option key={district} value={district}>
+                      {district}
+                    </option>
+                  )
+                )}
+            </select>
           </div>
 
           {/* 学校名称 */}
