@@ -1,11 +1,52 @@
 {
+  "home": {
+    "hero": {
+      "subtitle": "本项目由 <strong>$Li币团队</strong> 运营，灵感源自 996.ICU，致力于为被压榨的中国学生发声。"
+    },
+    "coreValues": {
+      "title": "核心理念",
+      "content": "<strong1>$LI</strong1> 希望建设一个 <highlight>独一无二的社区</highlight>，在中国这样的极权环境中，<strong2>捍卫人权、新闻自由与言论自由</strong2>。 随着 $LI 社区的壮大，我们希望凝聚共识，共同推动这些核心价值的实现。"
+    },
+    "whatIs611": {
+      "title": "什么是 611 学制？",
+      "quote": "“611Study” 指的是“早6点上学，晚11点放学，生病 ICU”。这已成为中国中学的普遍现象。",
+      "content": "学生每周在校学习 <strong>超过 102 小时</strong>，心理与身体健康遭受严重侵蚀。这一模式，<strong class='text-destructive'>连监狱都不如</strong>。"
+    },
+    "whatWeCanDo": {
+      "title": "我们能做什么？",
+      "items": [
+        "填写 <strong>超时学习学校登记问卷</strong>，更新全国 <strong class='text-red-500'>耻辱名单</strong>",
+        "互助式向异地教育局、市长热线举报上榜学校",
+        "参与社区，提出新的议题与解决方案",
+        "<strong>下午6点钟放学回家 🕕</strong> —— 这是应有的权利"
+      ]
+    },
+    "principles": {
+      "title": "原则与愿景",
+      "content": "611Study.ICU 是一场学生自下而上的呐喊，我们鼓励来自不同地区、不同领域的人士加入讨论。 本社区提倡 <strong>成熟、负责任、有建设性的发言</strong> ，共同探索解决之道。"
+    },
+    "inspiration": {
+      "title": "我们的灵感来源",
+      "content": "特别鸣谢 <strong>996.ICU</strong> 的启发与开源项目框架。我们将其精神延续到学生维权领域， 为中国孩子争取应有的成长环境。",
+      "note": "请自由发挥你的力量，<strong>但无需盲目扩展翻译版本</strong>。"
+    },
+    "cta": {
+      "title": "加入我们，一起推动改变",
+      "description": "通过填写问卷、参与社区，我们共同为学生争取应有的权利。",
+      "button": "立即参与"
+    },
+    "footer": {
+      "text": "&copy; 2025 611Study.ICU. All rights reserved."
+    }
+  },
   "metaTitle": "611 Study ICU.",
   "metaDescription": "611Study 是指“早6点上学，晚11点放学，生病 ICU”。这是中国现在初高中学校的普遍强制要求。无数的初高中生因此承受生理和心理健康的双重折磨。我们希望通过此项目，帮助中国学生们摆脱这种连监狱都不如的作息时间，拥有一个健康快乐的童年。",
   "navigation": {
     "submit": "内容提交",
     "display": "内容展示",
     "charts": "图表展示",
-    "map": "地理位置分布"
+    "map": "地理位置分布",
+    "contact": "联系我们"
   },
   "theme": {
     "light": "浅色",
@@ -17,12 +58,13 @@
     "zh-TW": "繁體中文"
   },
   "site": {
-    "title": "Study ICU",
+    "title": "611Study ICU",
     "description": "欢迎参与学校情况调查问卷"
   },
   "form": {
-    "title": "学校信息调查表",
-    "description": "请填写以下关于您所在学校的信息",
+    "title": "超时学习学校登记问卷",
+    "description": "请完整填写学校的相关情况信息，确保登记资料准确无误。",
+    "card": "我们高度重视您的隐私与数据安全。您提交的所有信息均将被严格保密，仅用于学术研究与数据分析，绝不会泄露给任何第三方。感谢您的信任与支持。",
     "province": {
       "label": "省份",
       "placeholder": "请选择省份",
@@ -68,11 +110,11 @@
     },
     "schoolStartTime": {
       "label": "上学时间",
-      "description": "日常上学时间"
+      "description": "日常上学时间，点击右侧时钟按钮可快速填写（AM 表示上午，PM 表示下午）。"
     },
     "schoolEndTime": {
       "label": "放学时间",
-      "description": "含晚自习"
+      "description": "日常放学时间(含晚自习)，点击右侧时钟按钮可快速填写(AM-上午/PM-下午)"
     },
     "weeklyStudyHours": {
       "label": "每周在校学习小时数",
@@ -118,6 +160,8 @@
     "location": "地理位置",
     "schoolSchedule": "作息时间",
     "statistics": "统计数据",
+    "winterVacationDays": "寒假放假天数",
+    "winterTuitionTotal": "寒假补课收费总价",
     "pagination": {
       "prev": "上一页",
       "next": "下一页",
@@ -144,5 +188,8 @@
     "monthlyHolidays": "每月假期天数分布",
     "schoolStartTime": "上学时间分布",
     "schoolEndTime": "放学时间分布"
+  },
+  "contact": {
+    "title": "联系我们"
   }
 }

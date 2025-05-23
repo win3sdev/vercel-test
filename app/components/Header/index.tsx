@@ -4,7 +4,10 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import {
+  PhoneIcon,
+  EnvelopeIcon,
   Bars3Icon,
   XMarkIcon,
   PlusCircleIcon,
@@ -13,6 +16,7 @@ import {
   MapIcon,
   GlobeAltIcon,
 } from "@heroicons/react/24/outline";
+
 import ThemeSwitcher from "@/app/components/ThemeSwitcher";
 import LanguageSwitcher from "@/app/components/LanguageSwitcher";
 import { GithubIcon } from "@/app/components/Icons";
@@ -38,21 +42,47 @@ export default function Header() {
   }, [isMenuOpen]);
 
   const navigationLinks = [
-    { href: `/${locale}/submit`, label: t("navigation.submit"), icon: PlusCircleIcon },
-    { href: `/${locale}/display`, label: t("navigation.display"), icon: TableCellsIcon },
-    { href: `/${locale}/charts`, label: t("navigation.charts"), icon: ChartBarIcon },
+    {
+      href: `/${locale}/submit`,
+      label: t("navigation.submit"),
+      icon: PlusCircleIcon,
+    },
+    {
+      href: `/${locale}/display`,
+      label: t("navigation.display"),
+      icon: TableCellsIcon,
+    },
+    {
+      href: `/${locale}/charts`,
+      label: t("navigation.charts"),
+      icon: ChartBarIcon,
+    },
     { href: `/${locale}/map`, label: t("navigation.map"), icon: MapIcon },
+    {
+      href: `/${locale}/contact`,
+      label: t("navigation.contact"),
+      icon: PhoneIcon,
+    },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-shadow hover:shadow-md">
-      <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-2xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
-          <Link href={`/${locale}`} className="mr-6 flex items-center space-x-3 group">
-            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 shadow-md transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3">
-              <GlobeAltIcon className="h-5 w-5 text-white" />
+          <Link
+            href={`/${locale}`}
+            className="mr-6 flex items-center space-x-3 group"
+          >
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl shadow-md transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3 bg-white dark:bg-neutral-900">
+              <Image
+                src="/logo.svg"
+                alt="Logo"
+                width={40}
+                height={40}
+                className="object-contain"
+              />
             </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 transition-all duration-300 ease-in-out group-hover:tracking-widest">
+            <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 transition-all duration-300 ease-in-out group-hover:tracking-widest  mr-40">
               {t("site.title")}
             </span>
           </Link>

@@ -20,6 +20,8 @@ interface SchoolData {
   suicideCases: number;
   studentComments: string;
   createdAt: string;
+  winterVacationDays: number;
+  winterTuitionTotal: number;
 }
 
 interface PaginationData {
@@ -41,6 +43,8 @@ interface FilterState {
   monthlyHolidays: string;
   suicideCases: string;
   studentComments: string;
+  winterVacationDays: string;
+  winterTuitionTotal: string;
 }
 
 export default function DisplayPage() {
@@ -67,6 +71,8 @@ export default function DisplayPage() {
     monthlyHolidays: "",
     suicideCases: "",
     studentComments: "",
+    winterVacationDays: "",
+    winterTuitionTotal: "",
   });
   const [mobileSearch, setMobileSearch] = useState("");
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
@@ -197,11 +203,15 @@ export default function DisplayPage() {
   );
 
   return (
-    <div className="w-full py-8 px-2 max-w-[1920px] mx-auto">
+    <div className="w-full py-8 px-2 max-w-[2920px] mx-auto">
       {/* <h1 className="text-3xl font-bold mb-8">{t("title")}</h1> */}
       <div className="mb-8 text-center">
         <h1 className="text-4xl font-bold">{t("title")}</h1>
-        {/* <p className="text-lg text-muted-foreground mt-2">{t("description")}</p> */}
+        <div className="mb-6 p-4 rounded-lg border bg-muted/30 dark:bg-muted/10 text-sm text-muted-foreground">
+          <p>
+            所有内容均来自用户投稿，并经人工审核后发布。如您发现信息有误，欢迎联系我们进行更正或删除。
+          </p>
+        </div>
       </div>
 
       {/* 移动端搜索框 */}
@@ -372,6 +382,8 @@ export default function DisplayPage() {
             <div>{t("schoolEndTime")}</div>
             <div>{t("weeklyStudyHours")}</div>
             <div>{t("monthlyHolidays")}</div>
+            {/* <div>{t("winterVacationDays")}</div>
+            <div>{t("winterTuitionTotal")}</div> */}
             <div>{t("suicideCases")}</div>
             <div>{t("studentComments")}</div>
             <div>{t("viewDetails")}</div>
@@ -515,6 +527,8 @@ export default function DisplayPage() {
               <div className="truncate">{item.schoolEndTime}</div>
               <div className="truncate">{item.weeklyStudyHours}</div>
               <div className="truncate">{item.monthlyHolidays}</div>
+              {/* <div className="truncate">{item.winterVacationDays}</div>
+              <div className="truncate">{item.winterTuitionTotal}</div> */}
               <div className="truncate">{item.suicideCases}</div>
               <div className="truncate">{item.studentComments}</div>
               <div>
@@ -560,7 +574,7 @@ export default function DisplayPage() {
           ))}
         </div>
 
-          {/* 搜索无结果时建议展示“重新加载”按钮 */}
+        {/* 搜索无结果时建议展示“重新加载”按钮 */}
         {data.length === 0 && (
           <div className="text-center py-12 text-neutral-500 dark:text-neutral-400">
             <p>{t("noData")}</p>
@@ -572,7 +586,6 @@ export default function DisplayPage() {
             </button>
           </div>
         )}
-
 
         {/* 分页控件 */}
         {data.length > 0 && (

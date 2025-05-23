@@ -149,7 +149,7 @@ export default function SubmitPage() {
 
       <div className="mb-6 p-4 rounded-lg border bg-muted/30 dark:bg-muted/10 text-sm text-muted-foreground">
         <p>
-          我们非常重视您的隐私和数据安全。所有提交信息将严格保密，仅用于研究分析。
+          {t("card")}
         </p>
       </div>
       <div className="">

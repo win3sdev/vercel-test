@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Noto_Sans_SC, Noto_Sans_TC, Noto_Serif_SC, Roboto } from "next/font/google"
+import {
+  Noto_Sans_SC,
+  Noto_Sans_TC,
+  Noto_Serif_SC,
+  Roboto,
+} from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { locales } from "@/i18n.config";
@@ -34,7 +39,7 @@ const roboto = Roboto({
   variable: "--font-roboto",
   display: "swap",
   subsets: ["latin"],
-})
+});
 
 const notoSc = Noto_Sans_SC({
   weight: ["300", "400", "500", "700"],
@@ -42,7 +47,7 @@ const notoSc = Noto_Sans_SC({
   preload: false,
   variable: "--font-noto-sc",
   display: "swap",
-})
+});
 
 const notoTc = Noto_Sans_TC({
   weight: ["300", "400", "500", "700"],
@@ -50,7 +55,7 @@ const notoTc = Noto_Sans_TC({
   preload: false,
   variable: "--font-noto-tc",
   display: "swap",
-})
+});
 
 const notoSerifSc = Noto_Serif_SC({
   weight: ["400", "700", "900"],
@@ -58,8 +63,7 @@ const notoSerifSc = Noto_Serif_SC({
   preload: false,
   variable: "--font-noto-serif-sc",
   display: "swap",
-})
-
+});
 
 // 动态 metadata
 export async function generateMetadata({
@@ -124,7 +128,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <NextIntlClientProvider locale={locale} messages={messages}>
             <div className="relative flex min-h-screen flex-col">
               <Header />
-              <div className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-6.5 lg:px-8 py-8">
+              <div className="flex-1 w-full max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-6.5 lg:px-8 py-8">
                 <main
                   className="w-full prose prose-neutral dark:prose-invert 
   max-w-none proseCustom"
@@ -136,7 +140,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                 className="w-full border-t border-neutral-200 dark:border-neutral-800 
   bg-neutral-50/70 dark:bg-neutral-900/60 backdrop-blur-md shadow-inner"
               >
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                   <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
                     <p className="text-sm text-neutral-500 dark:text-neutral-400 text-center sm:text-left">
                       © 2025 Li-DAO. All rights reserved.

@@ -5,7 +5,8 @@
     "submit": "內容提交",
     "display": "內容展示",
     "charts": "圖表展示",
-    "map": "地理位置分佈"
+    "map": "地理位置分佈",
+    "contact": "联系我们"
   },
   "theme": {
     "light": "淺色",
@@ -17,12 +18,13 @@
     "zh-TW": "繁體中文"
   },
   "site": {
-    "title": "Study ICU",
+    "title": "611Study ICU",
     "description": "歡迎使用我們的現代化 Next.js 應用，支持國際化和主題切換。"
   },
   "form": {
-    "title": "學校資訊調查表",
-    "description": "請填寫以下關於您所在學校的信息",
+    "title": "超時學習學校登記問卷",
+    "description": "請完整填寫學校的相關情況信息，確保登記資料準確無誤。",
+    "card": "我們高度重視您的隱私與資料安全。您提交的所有資訊將嚴格保密，僅用於學術研究與資料分析，絕不會洩露給任何第三方。感謝您的信任與支持。",
     "province": {
       "label": "省份",
       "placeholder": "請選擇省份",
@@ -68,11 +70,11 @@
     },
     "schoolStartTime": {
       "label": "上學時間",
-      "description": "日常上學時間"
+      "description": "日常上學時間，點擊右側時鐘按鈕可快速填寫（AM 表示上午，PM 表示下午）。"
     },
     "schoolEndTime": {
       "label": "放學時間",
-      "description": "含晚自習"
+      "description": "日常放學時間(含晚自習)，點選右側時鐘按鈕可快速填寫(AM-上午/PM-下午)"
     },
     "weeklyStudyHours": {
       "label": "每週在校學習小時數",
@@ -100,7 +102,7 @@
     "error": "提交失敗，請重試。"
   },
   "display": {
-    "title": "學校信息調查表",
+    "title": "超時學習學校登記問卷",
     "viewDetails": "查看詳情",
     "noData": "暫無數據",
     "province": "省份",
@@ -118,6 +120,8 @@
     "location": "地理位置",
     "schoolSchedule": "作息時間",
     "statistics": "統計數據",
+    "winterVacationDays": "寒假放假天數",
+    "winterTuitionTotal": "寒假補課收費總額",
     "pagination": {
       "prev": "上一頁",
       "next": "下一頁",

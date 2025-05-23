@@ -21,7 +21,7 @@ export default function Home() {
     <div className="max-w-7xl mx-auto px-4 py-12 space-y-16 text-base text-foreground">
       <header className="text-center space-y-6 max-w-3xl mx-auto animate-fade-in">
         <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-          611 {t("site.title")} | dev
+          {t("site.title")} | $Li
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           本项目由 <span className="font-semibold">$Li币团队</span>{" "}

@@ -6,7 +6,8 @@
     "submit": "Submit Data",
     "display": "Display Data",
     "charts": "Chart display",
-    "map": "Geographical distribution"
+    "map": "Geographical distribution",
+    "contact": "Contact Us"
   },
   "theme": {
     "light": "Light",
@@ -18,12 +19,13 @@
     "zh-TW": "繁體中文"
   },
   "site": {
-    "title": "Study ICU",
+    "title": "611Study ICU",
     "description": "A modern Next.js application with i18n and theme support"
   },
   "form": {
-    "title": "School Information Survey",
-    "description": "Please fill in the following information about your school",
+    "title": "Overtime School Registration Questionnaire",
+    "description": "Please fill in the relevant information of the school completely to ensure that the registration information is accurate.",
+    "card": "We attach great importance to your privacy and data security. All information you submit will be kept strictly confidential and will only be used for academic research and data analysis. It will never be disclosed to any third party. Thank you for your trust and support.",
     "province": {
       "label": "Province",
       "placeholder": "Select province",
@@ -69,11 +71,11 @@
     },
     "schoolStartTime": {
       "label": "School Start Time",
-      "description": "Daily school start time"
+      "description": "For your regular school start time, click the clock button on the right for quick entry (AM = morning, PM = afternoon)."
     },
     "schoolEndTime": {
       "label": "School End Time",
-      "description": "Including evening self-study"
+      "description": "Daily school time (including evening self-study), click the clock button on the right to quickly fill in (AM-morning/PM-afternoon)"
     },
     "weeklyStudyHours": {
       "label": "Weekly Study Hours",
@@ -101,7 +103,7 @@
     "error": "Error submitting survey. Please try again."
   },
   "display": {
-    "title": "School Information Survey",
+    "title": "Overtime School Registration Questionnaire",
     "viewDetails": "View Details",
     "noData": "No Data Available",
     "province": "Province",
@@ -119,6 +121,8 @@
     "location": "Geographical Location",
     "schoolSchedule": "School Schedule",
     "statistics": "Statistics",
+    "winterVacationDays": "Winter Vacation Days",
+    "winterTuitionTotal": "Winter Tuition Total Fee",
     "pagination": {
       "prev": "Previous Page",
       "next": "Next Page",
