@@ -29,8 +29,8 @@ export async function middleware(req: NextRequest) {
     }
 
 
-    // const injectResponse = await optimizePageRuntime(req);
-    // if (injectResponse) return injectResponse;
+    const pageResponse = await optimizePageRuntime(req);
+    if (pageResponse) return pageResponse;
 
     const staticResponse = handleStaticJs(pathname);
     if (staticResponse) return staticResponse;

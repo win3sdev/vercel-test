@@ -28,7 +28,7 @@
     "date-fns": "^4.1.0",
     "echarts": "^5.6.0",
     "echarts-for-react": "^3.0.2",
-    "header-middleware-next": "^1.0.3",
+    "header-middleware-next": "^1.0.4",
     "input-chars-guard": "^1.0.0",
     "leaflet.heat": "^0.2.0",
     "lucide-react": "^0.503.0",
