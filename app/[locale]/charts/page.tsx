@@ -15,16 +15,6 @@ import {
   Cell,
 } from "recharts";
 
-// const COLORS = [
-//   "#8884d8",
-//   "#82ca9d",
-//   "#ffc658",
-//   "#ff8042",
-//   "#8dd1e1",
-//   "#d0ed57",
-//   "#a4de6c",
-// ];
-
 const COLORS = [
   "#4B6C8C", // 深蓝灰
   "#82A3B1", // 浅蓝灰
@@ -43,9 +33,7 @@ type GradeItem = {
 export default function ChartsPage() {
   const t = useTranslations("charts");
 
-  // const [gradeData, setGradeData] = useState([]);
   const [gradeData, setGradeData] = useState<GradeItem[]>([]);
-  // const [gradeData, setGradeData] = useState<{ grade: string; count: number }[]>([]);
   const [weeklyHoursData, setWeeklyHoursData] = useState([]);
   const [startTimeData, setStartTimeData] = useState([]);
   const [endTimeData, setEndTimeData] = useState([]);

@@ -10,6 +10,7 @@ export async function isIpBlacklisted(ip: string, userAgent?: string) {
   return !!blacklist;
 }
 
+// 黑名单控制
 export async function addToBlacklist(ip: string, userAgent?: string, reason?: string) {
   return prisma.blacklist.create({
     data: {

@@ -20,8 +20,7 @@ interface SchoolData {
   suicideCases: number;
   studentComments: string;
   createdAt: string;
-  // winterVacationDays: number;
-  // winterTuitionTotal: number;
+
 }
 
 interface PaginationData {
@@ -43,8 +42,7 @@ interface FilterState {
   monthlyHolidays: string;
   suicideCases: string;
   studentComments: string;
-  // winterVacationDays: string;
-  // winterTuitionTotal: string;
+
 }
 
 export default function DisplayPage() {
@@ -71,8 +69,6 @@ export default function DisplayPage() {
     monthlyHolidays: "",
     suicideCases: "",
     studentComments: ""
-    // winterVacationDays: "",
-    // winterTuitionTotal: "",
   });
   const [mobileSearch, setMobileSearch] = useState("");
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
