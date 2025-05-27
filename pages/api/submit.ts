@@ -150,12 +150,12 @@ export default async function handler(
       },
     });
     // console.log(count);
-    if (count >= 3) {
-      return res.status(429).json({
-        success: false,
-        error: "你今天已经提交了三次，请明天再试。",
-      });
-    }
+    // if (count >= 3) {
+    //   return res.status(429).json({
+    //     success: false,
+    //     error: "你今天已经提交了三次，请明天再试。",
+    //   });
+    // }
 
     // 后续 IP 与 UA需要加密处理，如果代码公开的话，那就加载远程算法来解密数据，即使其他人看到代码，也无法直接解密数据。
     const surveyData = {
@@ -174,7 +174,7 @@ export default async function handler(
       ip: ip,
       userAgent: userAgent,
     };
-    console.log(surveyData);
+    // console.log(surveyData);
     const check_info = checkInputSecurity(surveyData);
     if (check_info["isSafe"]) {
       const result = await prisma.schoolSurvey.create({

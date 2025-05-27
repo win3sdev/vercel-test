@@ -410,22 +410,18 @@ export default function SubmitPage() {
               <option value="" disabled>
                 {t("grade.placeholder")}
               </option>
-              <option value="grade1">{t("grade.options.grade1")}</option>
-              <option value="grade2">{t("grade.options.grade2")}</option>
-              <option value="grade3">{t("grade.options.grade3")}</option>
-              <option value="grade4">{t("grade.options.grade4")}</option>
-              <option value="grade5">{t("grade.options.grade5")}</option>
-              <option value="grade6">{t("grade.options.grade6")}</option>
-              <option value="grade7">{t("grade.options.grade7")}</option>
-              <option value="grade8">{t("grade.options.grade8")}</option>
-              <option value="grade9">{t("grade.options.grade9")}</option>
-              <option value="grade10">{t("grade.options.grade10")}</option>
-              <option value="grade11">{t("grade.options.grade11")}</option>
-              <option value="grade12">{t("grade.options.grade12")}</option>
-              {/* <option value="grade13">{t("grade.options.grade13")}</option>
-              <option value="grade14">{t("grade.options.grade14")}</option>
-              <option value="grade15">{t("grade.options.grade15")}</option>
-              <option value="grade16">{t("grade.options.grade16")}</option> */}
+              <option value={t("grade.options.grade1")}>{t("grade.options.grade1")}</option>
+              <option value={t("grade.options.grade2")}>{t("grade.options.grade2")}</option>
+              <option value={t("grade.options.grade3")}>{t("grade.options.grade3")}</option>
+              <option value={t("grade.options.grade4")}>{t("grade.options.grade4")}</option>
+              <option value={t("grade.options.grade5")}>{t("grade.options.grade5")}</option>
+              <option value={t("grade.options.grade6")}>{t("grade.options.grade6")}</option>
+              <option value={t("grade.options.grade7")}>{t("grade.options.grade7")}</option>
+              <option value={t("grade.options.grade8")}>{t("grade.options.grade8")}</option>
+              <option value={t("grade.options.grade9")}>{t("grade.options.grade9")}</option>
+              <option value={t("grade.options.grade10")}>{t("grade.options.grade10")}</option>
+              <option value={t("grade.options.grade11")}>{t("grade.options.grade11")}</option>
+              <option value={t("grade.options.grade12")}>{t("grade.options.grade12")}</option>
             </select>
           </div>
 
