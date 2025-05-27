@@ -54,8 +54,8 @@ export default function SubmitPage() {
     suicideCases: "",
     studentComments: "",
     mouseTrack: "",
-    winterVacationDays: "", // 新增字段
-    winterTuitionTotal: "", // 新增字段
+    // winterVacationDays: "", // 新增字段
+    // winterTuitionTotal: "", // 新增字段
     safetyKeyword: "", // 新增字段
   });
 
@@ -108,8 +108,8 @@ export default function SubmitPage() {
           suicideCases: "",
           studentComments: "",
           mouseTrack: "",
-          winterVacationDays: "", // 新增字段
-          winterTuitionTotal: "", // 新增字段
+          // winterVacationDays: "", // 新增字段
+          // winterTuitionTotal: "", // 新增字段
           safetyKeyword: "", // 新增字段
         });
         setRecaptchaToken(null);
@@ -148,9 +148,7 @@ export default function SubmitPage() {
       </div>
 
       <div className="mb-6 p-4 rounded-lg border bg-muted/30 dark:bg-muted/10 text-sm text-muted-foreground">
-        <p>
-          {t("card")}
-        </p>
+        <p>{t("card")}</p>
       </div>
       <div className="">
         <form onSubmit={handleSubmit} className="max-w-2xl space-y-6">
@@ -253,14 +251,13 @@ export default function SubmitPage() {
           {/* 不封装 */}
           {/* 地区选择（省/市/区县） */}
           <div>
+            {/* 省份 */}
             <label className="block text-sm font-medium mb-1">
               {t("province.label")}
             </label>
             <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
               {t("province.description")}
             </p>
-
-            {/* 省份 */}
             <select
               id="province"
               name="province"
@@ -274,10 +271,12 @@ export default function SubmitPage() {
                   district: "",
                 }));
               }}
-              className="mb-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mb-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               required
             >
-              <option value="">{t("province.placeholder")}</option>
+              <option value="" disabled hidden>
+                {t("province.placeholder")}
+              </option>
               {Object.keys(regionData).map((province) => (
                 <option key={province} value={province}>
                   {province}
@@ -305,7 +304,7 @@ export default function SubmitPage() {
                 }));
               }}
               disabled={!formData.province}
-              className="mb-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white mb-2 w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             >
               <option value="">{t("city.placeholder")}</option>
@@ -335,7 +334,7 @@ export default function SubmitPage() {
                 }))
               }
               disabled={!formData.city}
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             >
               <option value="">{t("district.placeholder")}</option>
@@ -369,7 +368,7 @@ export default function SubmitPage() {
               value={formData.schoolName}
               onChange={handleChange}
               placeholder={t("schoolName.placeholder")}
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -405,7 +404,7 @@ export default function SubmitPage() {
               name="grade"
               value={formData.grade}
               onChange={handleChange}
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800  w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             >
               <option value="" disabled>
@@ -423,10 +422,10 @@ export default function SubmitPage() {
               <option value="grade10">{t("grade.options.grade10")}</option>
               <option value="grade11">{t("grade.options.grade11")}</option>
               <option value="grade12">{t("grade.options.grade12")}</option>
-              <option value="grade13">{t("grade.options.grade13")}</option>
+              {/* <option value="grade13">{t("grade.options.grade13")}</option>
               <option value="grade14">{t("grade.options.grade14")}</option>
               <option value="grade15">{t("grade.options.grade15")}</option>
-              <option value="grade16">{t("grade.options.grade16")}</option>
+              <option value="grade16">{t("grade.options.grade16")}</option> */}
             </select>
           </div>
 
@@ -447,7 +446,7 @@ export default function SubmitPage() {
               name="schoolStartTime"
               value={formData.schoolStartTime}
               onChange={handleChange}
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -469,7 +468,7 @@ export default function SubmitPage() {
               name="schoolEndTime"
               value={formData.schoolEndTime}
               onChange={handleChange}
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -493,7 +492,7 @@ export default function SubmitPage() {
               onChange={handleChange}
               placeholder={t("weeklyStudyHours.placeholder")}
               min="0"
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -517,13 +516,13 @@ export default function SubmitPage() {
               onChange={handleChange}
               placeholder={t("monthlyHolidays.placeholder")}
               min="0"
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
 
           {/* 寒假放假天数 */}
-          <div>
+          {/* <div>
             <label
               htmlFor="winterVacationDays"
               className="block text-sm font-medium mb-1"
@@ -538,13 +537,13 @@ export default function SubmitPage() {
               onChange={handleChange}
               placeholder="请输入寒假放假天数"
               min="0"
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
-          </div>
+          </div> */}
 
           {/* 寒假补课收费总价 */}
-          <div>
+          {/* <div>
             <label
               htmlFor="winterTuitionTotal"
               className="block text-sm font-medium mb-1"
@@ -560,10 +559,10 @@ export default function SubmitPage() {
               onChange={handleChange}
               placeholder="请输入补课总费用"
               min="0"
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
-          </div>
+          </div> */}
 
           {/* 安全词 */}
           <div>
@@ -571,16 +570,19 @@ export default function SubmitPage() {
               htmlFor="safetyKeyword"
               className="block text-sm font-medium mb-1"
             >
-              安全词（用于防止伪造）
+              {t("safaKeyword.label")}
             </label>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+              {t("safaKeyword.description")}
+            </p>
             <input
               type="text"
               id="safetyKeyword"
               name="safetyKeyword"
               value={formData.safetyKeyword}
               onChange={handleChange}
-              placeholder="请输入安全词"
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder={t("safaKeyword.placeholder")}
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -597,14 +599,14 @@ export default function SubmitPage() {
               {t("suicideCases.description")}
             </p>
             <input
-              type="number"
+              type="text"
               id="suicideCases"
               name="suicideCases"
               value={formData.suicideCases}
               onChange={handleChange}
               placeholder={t("suicideCases.placeholder")}
               min="0"
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -627,7 +629,7 @@ export default function SubmitPage() {
               onChange={handleChange}
               placeholder={t("studentComments.placeholder")}
               rows={4}
-              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>

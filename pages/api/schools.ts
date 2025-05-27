@@ -42,7 +42,7 @@ export default async function handler(
         monthlyHolidays: { equals: parseInt(query.monthlyHolidays as string) },
       }),
       ...(query.suicideCases && {
-        suicideCases: { equals: parseInt(query.suicideCases as string) },
+        suicideCases: { equals: query.suicideCases as string }, // 改成字符串类型
       }),
       ...(query.studentComments && {
         studentComments: { contains: query.studentComments as string },
@@ -56,12 +56,12 @@ export default async function handler(
         where,
         take: pageSize,
         skip: (page - 1) * pageSize,
-        orderBy: {
-          createdAt: "desc",
-        },
+        // orderBy: {
+        //   createdAt: "desc",
+        // },
       }),
     ]);
-
+    // console.log(data)
     return res.status(200).json({
       data,
       pagination: {

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import {
   ResponsiveContainer,
@@ -34,44 +35,111 @@ const COLORS = [
   "#C2B89B", // 米灰色
 ];
 
+type GradeItem = {
+  grade: string;
+  count: number;
+};
+
 export default function ChartsPage() {
-  const [gradeData, setGradeData] = useState([]);
+  const t = useTranslations("charts");
+
+  // const [gradeData, setGradeData] = useState([]);
+  const [gradeData, setGradeData] = useState<GradeItem[]>([]);
+  // const [gradeData, setGradeData] = useState<{ grade: string; count: number }[]>([]);
   const [weeklyHoursData, setWeeklyHoursData] = useState([]);
   const [startTimeData, setStartTimeData] = useState([]);
   const [endTimeData, setEndTimeData] = useState([]);
   const [provinceData, setProvinceData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
   useEffect(() => {
-    fetch("/api/charts/grades")
-      .then((res) => res.json())
-      .then(setGradeData);
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const [gradeRes, weeklyRes, startRes, endRes, provinceRes] =
+          await Promise.all([
+            fetch("/api/charts/grades"),
+            fetch("/api/charts/weekly-hours"),
+            fetch("/api/charts/start-time"),
+            fetch("/api/charts/end-time"),
+            fetch("/api/charts/province"),
+          ]);
 
-    fetch("/api/charts/weekly-hours")
-      .then((res) => res.json())
-      .then(setWeeklyHoursData);
+        const [gradeRaw, weeklyData, startData, endData, provinceData] =
+          await Promise.all([
+            gradeRes.json(),
+            weeklyRes.json(),
+            startRes.json(),
+            endRes.json(),
+            provinceRes.json(),
+          ]);
 
-    fetch("/api/charts/start-time")
-      .then((res) => res.json())
-      .then(setStartTimeData);
+        // 合并年级为阶段
+        const grouped: Record<string, number> = {};
+        const mapGradeToStage = (grade: string) => {
+          if (
+            [
+              "一年级",
+              "二年级",
+              "三年级",
+              "四年级",
+              "五年级",
+              "六年级",
+            ].includes(grade)
+          ) {
+            return "小学";
+          } else if (["初一", "初二", "初三"].includes(grade)) {
+            return "初中";
+          } else if (["高一", "高二", "高三"].includes(grade)) {
+            return "高中";
+          } else {
+            return "其他";
+          }
+        };
 
-    fetch("/api/charts/end-time")
-      .then((res) => res.json())
-      .then(setEndTimeData);
+        gradeRaw.forEach((item: GradeItem) => {
+          const stage = mapGradeToStage(item.grade);
+          grouped[stage] = (grouped[stage] || 0) + item.count;
+        });
 
-    fetch("/api/charts/province")
-      .then((res) => res.json())
-      .then(setProvinceData);
+        const mergedGradeData = Object.entries(grouped).map(
+          ([grade, count]) => ({
+            grade,
+            count,
+          })
+        );
+
+        // 设置状态
+        setGradeData(mergedGradeData);
+        setWeeklyHoursData(weeklyData);
+        setStartTimeData(startData);
+        setEndTimeData(endData);
+        setProvinceData(provinceData);
+        setHasError(false);
+      } catch (err) {
+        console.error("获取图表数据失败:", err);
+        setHasError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
-    <div className="w-full min-h-screen py-10 px-4 bg-gray-50">
+    <div className="w-full min-h-screen py-10 px-4">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-700 mb-10">可视化分析</h1>
+        <h1 className="text-4xl font-bold dark:text-white  mb-10">
+          {t("title")}
+        </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* 年级分布图 */}
-          <div className="bg-white rounded-2xl shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              年级分布
+          <div className="rounded-2xl shadow-md p-6 bg-card text-foreground">
+            <h2 className="text-xl font-semibold mb-4 ">
+              {t("gradeDistribution")}
             </h2>
             <div className="w-full h-[300px]">
               <ResponsiveContainer>
@@ -114,9 +182,9 @@ export default function ChartsPage() {
           </div>
 
           {/* 每周学习小时数分布 */}
-          <div className="bg-white rounded-2xl shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              每周学习小时数分布
+          <div className="rounded-2xl shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-4">
+              {t("weeklyStudyHoursDistribution")}
             </h2>
             <div className="w-full h-[300px]">
               <ResponsiveContainer>
@@ -159,9 +227,9 @@ export default function ChartsPage() {
           </div>
 
           {/* 上学时间分布 */}
-          <div className="bg-white rounded-2xl shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              上学时间分布
+          <div className="rounded-2xl shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-4 ">
+              {t("schoolStartTime")}
             </h2>
             <div className="w-full h-[300px]">
               <ResponsiveContainer>
@@ -204,9 +272,9 @@ export default function ChartsPage() {
           </div>
 
           {/* 放学时间分布 */}
-          <div className="bg-white rounded-2xl shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">
-              放学时间分布（含晚自习）
+          <div className="rounded-2xl shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-4 ">
+              {t("schoolEndTime")}
             </h2>
             <div className="w-full h-[300px]">
               <ResponsiveContainer>
@@ -248,10 +316,11 @@ export default function ChartsPage() {
             </div>
           </div>
         </div>
+
         {/* 省份分布 - 柱状图 */}
-        <div className="bg-white rounded-2xl shadow-md p-6 mb-8 w-full">
-          <h2 className="text-xl font-semibold mb-4 text-gray-700">
-            各省份数据分布
+        <div className="rounded-2xl shadow-md p-6 mb-8 w-full">
+          <h2 className="text-xl font-semibold mb-4 ">
+            {t("provinceDataDistribution")}
           </h2>
           <div className="w-full h-[400px]">
             <ResponsiveContainer width="100%" height="100%">

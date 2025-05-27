@@ -31,9 +31,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const [h, m] = time.split(':').map(Number)
     return h * 60 + m
   }
-
+  // console.log(all)
   for (const item of all) {
-    const minutes = parseMinutes(item.schoolStartTime)
+    const timeStr = item.schoolStartTime ?? "00:00";
+    const minutes = parseMinutes(timeStr)
 
     if (minutes < 300) ranges['5:00 前']++
     else if (minutes < 360) ranges['5:00 - 6:00']++

@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import * as echarts from "echarts/core";
 import ReactECharts from "echarts-for-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import {
   GeoComponent,
   TooltipComponent,
@@ -11,6 +13,7 @@ import {
 import { MapChart } from "echarts/charts";
 import { CanvasRenderer } from "echarts/renderers";
 import { useTranslations } from "next-intl";
+import { Construction } from "lucide-react";
 
 echarts.use([
   MapChart,
@@ -21,109 +24,29 @@ echarts.use([
 ]);
 
 export default function MapPage() {
-  const t = useTranslations();
-  // const [options, setOptions] = useState(null);
+  const t = useTranslations("map");
 
-  // useEffect(() => {
-  //   fetch("/map/china.json")
-  //     .then((res) => res.json())
-  //     .then((geoJson) => {
-  // // 过滤港澳台南海
-  // geoJson.features = geoJson.features.filter(feature => {
-  //   const name = feature.properties.name;
-  //   return !["香港", "澳门", "台湾", "南海诸岛"].includes(name);
-  // });
-
-  // echarts.registerMap("china", geoJson);
-
-  // // 获取所有省份名字
-  // const allProvinces = geoJson.features.map(f => f.properties.name);
-
-  // // 实际数据
-  // const provinceDataMap = {
-  //   北京: 100,
-  //   广东: 800,
-  //   上海: 300,
-  //   江苏: 400,
-  //   浙江: 350,
-  //   山东: 600,
-  //   河北: 200,
-  // };
-
-  // // 全部省份对应数据，默认0
-  // const provinceData = allProvinces.map(name => ({
-  //   name,
-  //   value: provinceDataMap[name] ?? 0,
-  // }));
-
-  // console.log("provinceData final:", provinceData);
-
-  // setOptions({
-  //   tooltip: {
-  //     trigger: "item",
-  //     formatter: (params) => {
-  //       return `${params.name}<br/>数值: ${params.data?.value ?? "无数据"}`;
-  //     },
-  //   },
-  //   visualMap: {
-  //     min: 0,
-  //     max: 1000,
-  //     left: "left",
-  //     bottom: "bottom",
-  //     text: ["高", "低"],
-  //     calculable: true,
-  //     inRange: {
-  //       color: ["#e0f3f8", "#74add1", "#4575b4", "#08306b"],
-  //     },
-  //     show: true,
-  //   },
-  //   series: [
-  //     {
-  //       name: "省份排名",
-  //       type: "map",
-  //       map: "china",
-  //       roam: true,
-  //       label: {
-  //         show: true,
-  //         fontSize: 10,
-  //         color: "#000",
-  //       },
-  //       itemStyle: {
-  //         borderColor: "#555",
-  //         borderWidth: 1,
-  //         areaColor: "#f5f7fa",
-  //       },
-  //       emphasis: {
-  //         label: {
-  //           show: true,
-  //           color: "#000",
-  //           fontWeight: "bold",
-  //         },
-  //         itemStyle: {
-  //           areaColor: "#a3c4f3",
-  //         },
-  //       },
-  //       data: provinceData,
-  //     },
-  //   ],
-  // });
-  // });
-
-  // }, []);
 
   return (
-    <div className="container py-8">
-      <h1 className="text-3xl font-bold mb-6">{t("navigation.map")}</h1>
-      {/* {options ? (
-        <ReactECharts
-          option={options}
-          style={{ height: "600px", width: "100%" }}
-          notMerge={true}
-          lazyUpdate={true}
-        />
-      ) : (
-        <p>加载中...</p>
-      )} */}
+    <div className="min-h-screen flex items-start justify-center pt-24 px-4 bg-gradient-to-br from-muted/40 to-background text-foreground">
+      <div className="bg-card/80 backdrop-blur-md border border-border rounded-2xl shadow-xl p-10 max-w-xl text-center animate-fade-in space-y-6">
+        <div className="flex justify-center mb-4">
+          <div className="bg-yellow-100 dark:bg-yellow-900 p-4 rounded-full shadow-inner">
+            <Construction className="w-10 h-10 text-yellow-600" />
+          </div>
+        </div>
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+          {t("title")}
+        </h1>
+        <p className="text-muted-foreground text-lg">
+          {t("description")}
+        </p>
+        <Link href="/">
+          <Button size="lg" className="mt-4">
+            ← {t("backHome")}
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

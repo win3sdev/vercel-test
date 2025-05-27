@@ -36,7 +36,8 @@ export default async function handler(
   };
 
   for (const item of all) {
-    const minutes = parseMinutes(item.schoolEndTime);
+    const timeStr = item.schoolEndTime ?? "00:00";
+    const minutes = parseMinutes(timeStr);
 
     if (minutes < 1020) ranges["17:00 前"]++; // < 17:00
     else if (minutes < 1140) ranges["17:00 - 19:00"]++; // 17:00 - 19:00

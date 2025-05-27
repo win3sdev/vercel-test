@@ -28,7 +28,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   for (const item of all) {
-    const h = item.weeklyStudyHours
+    const h = item.weeklyStudyHours ?? 0  // null 变 0
+    // const h = item.weeklyStudyHours
     if (h < 10) ranges['0-10 小时']++
     else if (h < 20) ranges['10-20 小时']++
     else if (h < 40) ranges['20-40 小时']++

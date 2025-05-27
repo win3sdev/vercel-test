@@ -1,44 +1,63 @@
 {
   "home": {
-    "hero": {
-      "subtitle": "本项目由 <strong>$Li币团队</strong> 运营，灵感源自 996.ICU，致力于为被压榨的中国学生发声。"
+    "intro": {
+      "part1": "本项目由 ",
+      "part2": " 运营，灵感源自 996.ICU，致力于为被压榨的中国学生发声。",
+      "part3": "$Li社区团队"
     },
-    "coreValues": {
+    "core": {
       "title": "核心理念",
-      "content": "<strong1>$LI</strong1> 希望建设一个 <highlight>独一无二的社区</highlight>，在中国这样的极权环境中，<strong2>捍卫人权、新闻自由与言论自由</strong2>。 随着 $LI 社区的壮大，我们希望凝聚共识，共同推动这些核心价值的实现。"
+      "part1": "希望建设一个 ",
+      "part2": "独一无二的社区",
+      "part3": "，在中国这样的极权环境中，",
+      "part4": "捍卫人权、新闻自由与言论自由",
+      "part5": "。 随着 $LI 社区的壮大，我们希望凝聚共识，共同推动这些核心价值的实现。"
     },
-    "whatIs611": {
+    "system": {
       "title": "什么是 611 学制？",
       "quote": "“611Study” 指的是“早6点上学，晚11点放学，生病 ICU”。这已成为中国中学的普遍现象。",
-      "content": "学生每周在校学习 <strong>超过 102 小时</strong>，心理与身体健康遭受严重侵蚀。这一模式，<strong class='text-destructive'>连监狱都不如</strong>。"
+      "text": "学生每周在校学习 ",
+      "highlight": "超过 102 小时",
+      "consequence": "，心理与身体健康遭受严重侵蚀。这一模式，",
+      "warning": "连监狱都不如",
+      "ending": "。"
     },
-    "whatWeCanDo": {
+    "actions": {
       "title": "我们能做什么？",
-      "items": [
-        "填写 <strong>超时学习学校登记问卷</strong>，更新全国 <strong class='text-red-500'>耻辱名单</strong>",
+      "list": [
+        "填写 ",
+        "超时学习学校登记问卷",
+        "，更新全国 ",
+        "耻辱名单",
         "互助式向异地教育局、市长热线举报上榜学校",
         "参与社区，提出新的议题与解决方案",
-        "<strong>下午6点钟放学回家 🕕</strong> —— 这是应有的权利"
+        "下午6点钟放学回家 🕕 —— 这是应有的权利"
       ]
     },
-    "principles": {
+    "vision": {
       "title": "原则与愿景",
-      "content": "611Study.ICU 是一场学生自下而上的呐喊，我们鼓励来自不同地区、不同领域的人士加入讨论。 本社区提倡 <strong>成熟、负责任、有建设性的发言</strong> ，共同探索解决之道。"
+      "content": "611Study.ICU 是一场学生自下而上的呐喊，我们鼓励来自不同地区、不同领域的人士加入讨论。本社区提倡 ",
+      "highlight": "成熟、负责任、有建设性的发言",
+      "ending": "，共同探索解决之道。"
     },
     "inspiration": {
       "title": "我们的灵感来源",
-      "content": "特别鸣谢 <strong>996.ICU</strong> 的启发与开源项目框架。我们将其精神延续到学生维权领域， 为中国孩子争取应有的成长环境。",
-      "note": "请自由发挥你的力量，<strong>但无需盲目扩展翻译版本</strong>。"
+      "thanks": "特别鸣谢 ",
+      "reference": "996.ICU",
+      "followup": " 的启发与开源项目框架。我们将其精神延续到学生维权领域，为中国孩子争取应有的成长环境。",
+      "note": "请自由发挥你的力量，",
+      "warning": "但无需盲目扩展翻译版本"
     },
     "cta": {
       "title": "加入我们，一起推动改变",
-      "description": "通过填写问卷、参与社区，我们共同为学生争取应有的权利。",
+      "desc": "通过填写问卷、参与社区，我们共同为学生争取应有的权利。",
       "button": "立即参与"
     },
     "footer": {
-      "text": "&copy; 2025 611Study.ICU. All rights reserved."
+      "text": "版权所有"
     }
   },
+
   "metaTitle": "611 Study ICU.",
   "metaDescription": "611Study 是指“早6点上学，晚11点放学，生病 ICU”。这是中国现在初高中学校的普遍强制要求。无数的初高中生因此承受生理和心理健康的双重折磨。我们希望通过此项目，帮助中国学生们摆脱这种连监狱都不如的作息时间，拥有一个健康快乐的童年。",
   "navigation": {
@@ -65,6 +84,11 @@
     "title": "超时学习学校登记问卷",
     "description": "请完整填写学校的相关情况信息，确保登记资料准确无误。",
     "card": "我们高度重视您的隐私与数据安全。您提交的所有信息均将被严格保密，仅用于学术研究与数据分析，绝不会泄露给任何第三方。感谢您的信任与支持。",
+    "safaKeyword": {
+      "label": "安全词",
+      "description": "用于防止伪造",
+      "placeholder": "请输入安全词"
+    },
     "province": {
       "label": "省份",
       "placeholder": "请选择省份",
@@ -96,16 +120,12 @@
         "grade4": "四年级",
         "grade5": "五年级",
         "grade6": "六年级",
-        "grade7": "七年级",
-        "grade8": "八年级",
-        "grade9": "九年级",
+        "grade7": "初一",
+        "grade8": "初二",
+        "grade9": "初三",
         "grade10": "高一",
         "grade11": "高二",
-        "grade12": "高三",
-        "grade13": "大一",
-        "grade14": "大二",
-        "grade15": "大三",
-        "grade16": "大四"
+        "grade12": "高三"
       }
     },
     "schoolStartTime": {
@@ -143,6 +163,7 @@
   },
   "display": {
     "title": "学校信息调查表",
+    "card": "所有内容均来自用户投稿，并经人工审核后发布。如您发现信息有误，欢迎联系我们进行更正或删除。",
     "viewDetails": "查看详情",
     "noData": "暂无数据",
     "province": "省份",
@@ -178,18 +199,55 @@
     }
   },
   "map": {
-    "locate": "定位",
-    "reset": "重置",
-    "placeholder": "地图将在这里显示"
+    "title": "内容正在建设中",
+    "description": "我们正在努力完善此页面内容，敬请期待。",
+    "backHome": "返回首页"
   },
   "charts": {
     "title": "数据统计图表",
     "gradeDistribution": "年级分布",
-    "monthlyHolidays": "每月假期天数分布",
+    "weeklyStudyHoursDistribution": "每周学习小时数分布",
     "schoolStartTime": "上学时间分布",
-    "schoolEndTime": "放学时间分布"
+    "schoolEndTime": "放学时间分布（含晚自习）",
+    "provinceDataDistribution": "各省份数据分布"
   },
   "contact": {
-    "title": "加入我们"
+    "title": "加入 $Li 社区",
+    "join": {
+      "title": "加入 $Li 社区",
+      "content": "我们诚挚邀请您成为 <strong>$Li 社区</strong> 的一员。 这是一个致力于推动中国民主、言论自由和新闻自由的团体。加入我们的 <a>Telegram 群组</a>，与志同道合的伙伴交流，分享观点，共同推动积极变革。"
+    },
+    "committee": {
+      "title": "加入筹备委员会",
+      "intro": "您是否拥有创新想法或专业技能？我们正在组建筹备委员会，旨在引领 <strong>$Li 社区</strong> 向 <strong>DDAO（民主化去中心化自治组织）</strong> 方向发展。",
+      "roles": {
+        "visionary": "<strong>独到见解的愿景者：</strong> 拥有与我们价值观契合的 DAO 或创新项目理念。",
+        "tech": "<strong>技术专家：</strong> 前端/后端开发经验；区块链开发，尤其是 Rust 和 Solana 生态。",
+        "design": "<strong>创意设计师：</strong> 精通 UI/UX、平面设计或其他创意领域。",
+        "rights": "<strong>民主与人权倡导者：</strong> 在民主、人权和言论自由领域具备经验。"
+      }
+    },
+    "why": {
+      "title": "为什么加入？",
+      "mission": "与志同道合且充满热情的伙伴携手共进。",
+      "freedom": "参与推动自由、人权及民主实验的伟大事业。",
+      "future": "在塑造 $Li 社区未来蓝图中发挥重要作用。"
+    },
+    "how": {
+      "title": "如何申请",
+      "intro": "您可以通过以下方式与我们取得联系：",
+      "telegram": "点击加入我们的 Telegram 群组"
+    },
+    "foundation": {
+      "title": "雪花基金会",
+      "name": "李老师不是你老师"
+    },
+    "jiang": {
+      "title": "611 Study ICU项目负责人-蒋不",
+      "bio": "蒋不 — 反賊，藝術家，情境主義者。生活在巴黎。拍過紀錄片，當過選片人，開過出租車，進過派出所。"
+    },
+    "tech": {
+      "title": "技术支持 - xROx"
+    }
   }
 }

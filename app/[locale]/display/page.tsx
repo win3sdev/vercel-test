@@ -20,8 +20,8 @@ interface SchoolData {
   suicideCases: number;
   studentComments: string;
   createdAt: string;
-  winterVacationDays: number;
-  winterTuitionTotal: number;
+  // winterVacationDays: number;
+  // winterTuitionTotal: number;
 }
 
 interface PaginationData {
@@ -43,8 +43,8 @@ interface FilterState {
   monthlyHolidays: string;
   suicideCases: string;
   studentComments: string;
-  winterVacationDays: string;
-  winterTuitionTotal: string;
+  // winterVacationDays: string;
+  // winterTuitionTotal: string;
 }
 
 export default function DisplayPage() {
@@ -70,9 +70,9 @@ export default function DisplayPage() {
     weeklyStudyHours: "",
     monthlyHolidays: "",
     suicideCases: "",
-    studentComments: "",
-    winterVacationDays: "",
-    winterTuitionTotal: "",
+    studentComments: ""
+    // winterVacationDays: "",
+    // winterTuitionTotal: "",
   });
   const [mobileSearch, setMobileSearch] = useState("");
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
@@ -203,13 +203,13 @@ export default function DisplayPage() {
   );
 
   return (
-    <div className="w-full py-8 px-2 max-w-[2920px] mx-auto">
+    <div className="w-full py-8 px-2 max-w-[2920px] mx-auto dark:text-white">
       {/* <h1 className="text-3xl font-bold mb-8">{t("title")}</h1> */}
-      <div className="mb-8 text-center">
+      <div className="mb-8 text-center dark:text-white">
         <h1 className="text-4xl font-bold">{t("title")}</h1>
         <div className="mb-6 p-4 rounded-lg border bg-muted/30 dark:bg-muted/10 text-sm text-muted-foreground">
           <p>
-            所有内容均来自用户投稿，并经人工审核后发布。如您发现信息有误，欢迎联系我们进行更正或删除。
+            {t("card")}
           </p>
         </div>
       </div>
@@ -227,12 +227,12 @@ export default function DisplayPage() {
               }
             }}
             placeholder={t("schoolName")}
-            className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            className="w-full px-3 py-2 text-sm rounded-lg border border-border dark:border-border-dark bg-background dark:bg-background-dark"
           />
           <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-2">
             <button
               onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
-              className="p-1 rounded border border-neutral-200 dark:border-neutral-800 hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+              className="p-1 rounded border border-border dark:border-border-dark dark:border-neutral-800 hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
             >
               {showAdvancedSearch ? (
                 <ChevronUpIcon className="w-5 h-5" />
@@ -242,7 +242,7 @@ export default function DisplayPage() {
             </button>
             <button
               onClick={() => fetchData(1)}
-              className="px-3 py-1 text-sm rounded bg-blue-500 text-white hover:bg-blue-600 transition-colors"
+              className="px-3 py-1 text-sm rounded bg-blue-500 text-white hover:bg-blue-600 transition-colors dark:border-border-dark bg-background dark:bg-background-dark"
             >
               {t("filter.apply")}
             </button>
@@ -251,7 +251,7 @@ export default function DisplayPage() {
 
         {/* 高级搜索面板 */}
         {showAdvancedSearch && (
-          <div className="bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 space-y-4">
+          <div className="bg-card dark:bg-card-dark dark:bg-card dark:bg-card-dark rounded-lg border border-border dark:border-border-dark dark:border-neutral-800 p-4 space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium mb-1">
@@ -264,7 +264,7 @@ export default function DisplayPage() {
                     handleAdvancedFilterChange("province", e.target.value)
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-border dark:border-border-dark bg-background dark:bg-background-dark"
                 />
               </div>
               <div>
@@ -278,7 +278,7 @@ export default function DisplayPage() {
                     handleAdvancedFilterChange("city", e.target.value)
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-border dark:border-border-dark bg-background dark:bg-background-dark"
                 />
               </div>
               <div>
@@ -292,7 +292,7 @@ export default function DisplayPage() {
                     handleAdvancedFilterChange("grade", e.target.value)
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-border dark:border-border-dark dark:border-neutral-800 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
               <div>
@@ -309,7 +309,7 @@ export default function DisplayPage() {
                     )
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-border dark:border-border-dark dark:border-neutral-800 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
               <div>
@@ -326,7 +326,7 @@ export default function DisplayPage() {
                     )
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-full px-3 py-2 text-sm rounded-lg border  border-border dark:border-border-dark dark:border-neutral-800 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
               <div>
@@ -340,7 +340,7 @@ export default function DisplayPage() {
                     handleAdvancedFilterChange("suicideCases", e.target.value)
                   }
                   placeholder={t("filter.placeholder")}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  className="w-full px-3 py-2 text-sm rounded-lg border  border-border dark:border-border-dark dark:border-neutral-800 dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
             </div>
@@ -357,7 +357,7 @@ export default function DisplayPage() {
                   });
                   fetchData(1);
                 }}
-                className="px-3 py-1.5 text-sm rounded border border-neutral-200 dark:border-neutral-800 hover:border-red-500 dark:hover:border-red-500 transition-colors"
+                className="px-3 py-1.5 text-sm rounded border  border-border dark:border-border-dark dark:border-neutral-800 hover:border-red-500 dark:hover:border-red-500 transition-colors"
               >
                 {t("filter.clear")}
               </button>
@@ -372,7 +372,7 @@ export default function DisplayPage() {
         */}
         <div className="hidden md:block">
           {/* 表头 */}
-          <div className="grid grid-cols-12 gap-2 p-2 bg-neutral-100 dark:bg-neutral-800 rounded-lg font-bold text-sm">
+          <div className="grid grid-cols-12 gap-2 p-2 bg-surface dark:bg-surface-dark dark:bg-neutral-800 rounded-lg font-bold text-sm">
             <div>{t("province")}</div>
             <div>{t("city")}</div>
             <div>{t("district")}</div>
@@ -382,22 +382,21 @@ export default function DisplayPage() {
             <div>{t("schoolEndTime")}</div>
             <div>{t("weeklyStudyHours")}</div>
             <div>{t("monthlyHolidays")}</div>
-            {/* <div>{t("winterVacationDays")}</div>
-            <div>{t("winterTuitionTotal")}</div> */}
+
             <div>{t("suicideCases")}</div>
             <div>{t("studentComments")}</div>
             <div>{t("viewDetails")}</div>
           </div>
 
           {/* 筛选行 */}
-          <div className="grid grid-cols-12 gap-2 p-2 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
+          <div className="grid grid-cols-12 gap-2 p-2 bg-card dark:bg-card-dark dark:bg-card rounded-lg border border-border dark:border-border-dark dark:border-neutral-800">
             <div>
               <input
                 type="text"
                 value={filters.province}
                 onChange={(e) => handleFilterChange("province", e.target.value)}
                 placeholder={t("filter.placeholder")}
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent "
               />
             </div>
             <div>
@@ -406,7 +405,7 @@ export default function DisplayPage() {
                 value={filters.city}
                 onChange={(e) => handleFilterChange("city", e.target.value)}
                 placeholder={t("filter.placeholder")}
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent"
               />
             </div>
             <div>
@@ -415,7 +414,7 @@ export default function DisplayPage() {
                 value={filters.district}
                 onChange={(e) => handleFilterChange("district", e.target.value)}
                 placeholder={t("filter.placeholder")}
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent"
               />
             </div>
             <div>
@@ -426,7 +425,7 @@ export default function DisplayPage() {
                   handleFilterChange("schoolName", e.target.value)
                 }
                 placeholder={t("filter.placeholder")}
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent"
               />
             </div>
             <div>
@@ -435,7 +434,7 @@ export default function DisplayPage() {
                 value={filters.grade}
                 onChange={(e) => handleFilterChange("grade", e.target.value)}
                 placeholder={t("filter.placeholder")}
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent"
               />
             </div>
             <div>
@@ -445,7 +444,7 @@ export default function DisplayPage() {
                 onChange={(e) =>
                   handleFilterChange("schoolStartTime", e.target.value)
                 }
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent"
               />
             </div>
             <div>
@@ -455,7 +454,7 @@ export default function DisplayPage() {
                 onChange={(e) =>
                   handleFilterChange("schoolEndTime", e.target.value)
                 }
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent"
               />
             </div>
             <div>
@@ -466,7 +465,7 @@ export default function DisplayPage() {
                   handleFilterChange("weeklyStudyHours", e.target.value)
                 }
                 placeholder={t("filter.placeholder")}
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent"
               />
             </div>
             <div>
@@ -477,7 +476,7 @@ export default function DisplayPage() {
                   handleFilterChange("monthlyHolidays", e.target.value)
                 }
                 placeholder={t("filter.placeholder")}
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent"
               />
             </div>
             <div>
@@ -488,7 +487,7 @@ export default function DisplayPage() {
                   handleFilterChange("suicideCases", e.target.value)
                 }
                 placeholder={t("filter.placeholder")}
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent"
               />
             </div>
             <div>
@@ -499,7 +498,7 @@ export default function DisplayPage() {
                   handleFilterChange("studentComments", e.target.value)
                 }
                 placeholder={t("filter.placeholder")}
-                className="w-full px-2 py-1 text-sm rounded border border-neutral-200 dark:border-neutral-800 bg-transparent"
+                className="w-full px-2 py-1 text-sm rounded border border border-border dark:border-border-dark dark:border-neutral-800 bg-transparent"
               />
             </div>
             <div>
@@ -516,8 +515,16 @@ export default function DisplayPage() {
           {data.map((item) => (
             <div
               key={item.id}
-              className="grid grid-cols-12 gap-2 p-2 mb-3 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:bg-blue-50 dark:hover:bg-blue-900 transition-colors"
+              className="grid grid-cols-12 gap-2 p-2 mb-3 
+      bg-card dark:bg-card-dark 
+     dark:!text-white  {/* 字体颜色 */}
+      border border-border dark:border-border-dark 
+      rounded-lg 
+      hover:bg-blue-50 dark:hover:bg-white/10  {/* 悬浮背景，暗色模式浅白半透明 */}
+      hover:text-neutral-900 dark:hover:text-white  {/* 悬浮字体颜色，暗色模式保持白色 */}
+      transition-colors"
             >
+              {/* 子元素不设置字体颜色，继承外层 */}
               <div className="truncate">{item.province}</div>
               <div className="truncate">{item.city}</div>
               <div className="truncate">{item.district}</div>
@@ -527,8 +534,6 @@ export default function DisplayPage() {
               <div className="truncate">{item.schoolEndTime}</div>
               <div className="truncate">{item.weeklyStudyHours}</div>
               <div className="truncate">{item.monthlyHolidays}</div>
-              {/* <div className="truncate">{item.winterVacationDays}</div>
-              <div className="truncate">{item.winterTuitionTotal}</div> */}
               <div className="truncate">{item.suicideCases}</div>
               <div className="truncate">{item.studentComments}</div>
               <div>
@@ -548,12 +553,12 @@ export default function DisplayPage() {
           {data.map((item) => (
             <div
               key={item.id}
-              className="bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 space-y-2"
+              className="bg-card dark:bg-card-dark dark:bg-card dark:bg-card-dark rounded-lg border border-border dark:border-border-dark dark:border-neutral-800 p-4 space-y-2"
             >
               <div className="flex justify-between items-start">
                 <div>
                   <div className="font-medium text-lg">{item.schoolName}</div>
-                  <div className="flex gap-2 items-center text-sm text-neutral-500 dark:text-neutral-400">
+                  <div className="flex gap-2 items-center text-sm  dark:text-neutral-400">
                     <MapPinIcon className="w-4 h-4" />
                     <span>
                       {item.city} | {item.grade}
@@ -601,7 +606,7 @@ export default function DisplayPage() {
               <button
                 onClick={() => handlePageChange(pagination.currentPage - 1)}
                 disabled={pagination.currentPage === 1}
-                className="px-3 py-1 rounded border border-neutral-200 dark:border-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+                className="px-3 py-1 rounded border border border-border dark:border-border-dark dark:border-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
               >
                 {t("pagination.prev")}
               </button>
@@ -612,7 +617,7 @@ export default function DisplayPage() {
               <button
                 onClick={() => handlePageChange(pagination.currentPage + 1)}
                 disabled={pagination.currentPage === pagination.totalPages}
-                className="px-3 py-1 rounded border border-neutral-200 dark:border-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+                className="px-3 py-1 rounded border border border-border dark:border-border-dark dark:border-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
               >
                 {t("pagination.next")}
               </button>

@@ -126,7 +126,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       >
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <div className="relative flex min-h-screen flex-col">
+            <div className="relative flex min-h-screen flex-col w-full overflow-x-hidden max-w-full">
               <Header />
               <div className="flex-1 w-full max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-6.5 lg:px-8 py-8">
                 <main

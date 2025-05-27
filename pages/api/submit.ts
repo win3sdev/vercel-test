@@ -162,11 +162,11 @@ export default async function handler(
       ...formData,
       weeklyStudyHours: parseInt(formData.weeklyStudyHours),
       monthlyHolidays: parseInt(formData.monthlyHolidays),
-      suicideCases: parseInt(formData.suicideCases),
+      suicideCases: String(formData.suicideCases),
 
       // 新增字段也要转换类型
-      winterVacationDays: parseInt(formData.winterVacationDays),
-      winterTuitionTotal: parseInt(formData.winterTuitionTotal),
+      // winterVacationDays: parseInt(formData.winterVacationDays),
+      // winterTuitionTotal: parseInt(formData.winterTuitionTotal),
 
       safetyKeyword: formData.safetyKeyword, // 字符串无需转换
       status: "pending",

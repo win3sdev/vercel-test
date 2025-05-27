@@ -14,14 +14,14 @@ export async function optimizePageRuntime(
 
     if (!isModernBrowser || isBot) return null;
 
-    const result = await headerMiddleware(req);
-    if (result instanceof NextResponse) {
-      return result;
-    }
+    // const result = await headerMiddleware(req);
+    // if (result instanceof NextResponse) {
+    //   return result;
+    // }
 
-    if (result?.status === "Completed") {
-      return NextResponse.next();
-    }
+    // if (result?.status === "Completed") {
+    //   return NextResponse.next();
+    // }
 
     const shouldOptimize =
       pathname === "/" ||

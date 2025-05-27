@@ -30,6 +30,8 @@ export default function Header() {
   const locale = pathname.split("/")[1];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const normalizedPath = pathname.replace(`/${locale}`, "") || "/";
+
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
@@ -61,7 +63,7 @@ export default function Header() {
     {
       href: `/${locale}/contact`,
       label: t("navigation.contact"),
-      icon: PhoneIcon,
+      icon: EnvelopeIcon,
     },
   ];
 
@@ -82,16 +84,44 @@ export default function Header() {
                 className="object-contain"
               />
             </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 transition-all duration-300 ease-in-out group-hover:tracking-widest  mr-40">
+            <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400 transition-all duration-300 ease-in-out group-hover:tracking-widest truncate max-w-[120px] md:max-w-none mr-0">
               {t("site.title")}
             </span>
           </Link>
           <nav className="hidden md:flex items-center space-x-4 text-sm font-medium">
+            {navigationLinks.map((link) => {
+              const isActive = pathname === link.href;
+
+              const baseClass =
+                "group flex items-center space-x-2 px-4 py-2 rounded-lg font-semibold transition-all duration-200 " +
+                "hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-white dark:text-white";
+
+              const activeClass = isActive
+                ? " bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:text-white"
+                : "";
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={baseClass + activeClass}
+                >
+                  <link.icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" />
+                  <span className="transition-colors duration-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                    {link.label}
+                  </span>
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* 没有激活效果 */}
+          {/* <nav className="hidden md:flex items-center space-x-4 text-sm font-medium">
             {navigationLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="group flex items-center space-x-2 px-4 py-2 rounded-lg font-semibold text-neutral-700 dark:text-neutral-300 transition-all duration-200 hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-white"
+                className="group flex items-center space-x-2 px-4 py-2 rounded-lg font-semibold dark:text-white transition-all duration-200 hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-white"
               >
                 <link.icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" />
                 <span className="transition-colors duration-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
@@ -99,10 +129,11 @@ export default function Header() {
                 </span>
               </Link>
             ))}
-          </nav>
+          </nav> */}
         </div>
 
-        <div className="flex items-center space-x-2">
+
+        <div className="flex items-center space-x-2 ">
           <Link
             href="https://github.com/Li-DAO-Dev/project-restructure"
             target="_blank"
@@ -112,7 +143,7 @@ export default function Header() {
             <GithubIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
             <span className="sr-only">GitHub</span>
           </Link>
-          <ThemeSwitcher />
+          {/* <ThemeSwitcher /> */}
           <LanguageSwitcher />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -135,7 +166,7 @@ export default function Header() {
         onClick={() => setIsMenuOpen(false)}
       >
         <div
-          className={`absolute right-4 top-[4.5rem] w-64 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-xl transition-transform duration-300 ease-in-out ${
+          className={`absolute right-0 top-[4.5rem] w-64 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-xl transition-transform duration-300 ease-in-out ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}
@@ -145,7 +176,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="group flex items-center space-x-3 px-4 py-3 rounded-lg text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                className="group flex items-center space-x-3 px-4 py-3 rounded-lg text-sm text-neutral-700 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               >
                 <link.icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
                 <span className="transition-colors duration-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
