@@ -154,7 +154,7 @@
     "studentComments": {
       "label": "學生評論",
       "placeholder": "請輸入您的評論",
-      "description": "您的學校是否有學生心理壓力過大甚至選擇輕生的情況"
+      "description": "請分享您的真實看法"
     },
     "submit": "提交調查",
     "submitting": "提交中...",

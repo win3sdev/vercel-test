@@ -404,7 +404,7 @@ export default function SubmitPage() {
               name="grade"
               value={formData.grade}
               onChange={handleChange}
-              className="text-neutral-800  w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             >
               <option value="" disabled>
@@ -591,9 +591,9 @@ export default function SubmitPage() {
             >
               {t("suicideCases.label")}
             </label>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+            {/* <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
               {t("suicideCases.description")}
-            </p>
+            </p> */}
             <input
               type="text"
               id="suicideCases"
@@ -615,9 +615,9 @@ export default function SubmitPage() {
             >
               {t("studentComments.label")}
             </label>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+            {/* <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
               {t("studentComments.description")}
-            </p>
+            </p> */}
             <textarea
               id="studentComments"
               name="studentComments"
