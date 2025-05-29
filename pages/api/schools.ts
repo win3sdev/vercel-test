@@ -59,6 +59,22 @@ export default async function handler(
         // orderBy: {
         //   createdAt: "desc",
         // },
+        select: {
+          id: true,
+          province: true,
+          city: true,
+          district: true,
+          schoolName: true,
+          grade: true,
+          schoolStartTime: true,
+          schoolEndTime: true,
+          weeklyStudyHours: true,
+          monthlyHolidays: true,
+          suicideCases: true,
+          studentComments: true,
+          createdAt: true,
+          updatedAt: true,
+        },
       }),
     ]);
     // console.log(data)
