@@ -51,7 +51,8 @@
     "cta": {
       "title": "Join us to drive change together",
       "desc": "By filling out surveys and participating in the community, we collectively fight for students' rightful rights.",
-      "button": "Join Now"
+      "submit": "Fill out the questionnaire",
+      "contact": "Join us"
     },
     "footer": {
       "text": "All rights reserved"

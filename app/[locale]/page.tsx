@@ -18,15 +18,44 @@ export default function Home() {
   const locale = useLocale();
   return (
     <div className="max-w-7xl mx-auto px-4 py-12 space-y-16 text-base text-foreground">
-      <header className="text-center space-y-6 max-w-3xl mx-auto animate-fade-in">
-        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+      <header className="text-center space-y-8 max-w-3xl mx-auto animate-fade-in px-4">
+        {/* 主标题 */}
+        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
           {t("site.title")} | $Li
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
           {t("home.intro.part1")}
-          <span className="font-semibold">{t("home.intro.part3")}</span>
+          <span className="font-semibold text-foreground">
+            {t("home.intro.part3")}
+          </span>
           {t("home.intro.part2")}
         </p>
+
+        <div className="space-y-2">
+          <h3 className="text-2xl lg:text-3xl font-bold tracking-tight text-foreground">
+            {t("home.cta.title")}
+          </h3>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            {t("home.cta.desc")}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4 pt-2">
+          <Link
+            href={`/${locale}/submit`}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-500 text-white font-semibold shadow-md hover:brightness-110 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-cyan-400 focus:ring-offset-2 transition-transform dark:from-cyan-400 dark:to-blue-300"
+          >
+            {t("home.cta.submit")} <FaArrowRight className="ml-1" />
+          </Link>
+
+          <Link
+            href={`/${locale}/contact`}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-gray-500 to-amber-500 text-white font-semibold shadow-md hover:brightness-110 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-400 focus:ring-offset-2 transition-transform dark:from-gray-400 dark:to-yellow-300"
+          >
+            {t("home.cta.contact")} <FaArrowRight className="ml-1" />
+          </Link>
+        </div>
       </header>
 
       <section className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -119,7 +148,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-24 text-center bg-gradient-to-br from-muted/60 to-muted/40 dark:from-muted/40 dark:to-muted/20 rounded-2xl p-12 shadow-xl space-y-6 animate-fade-in">
+      {/* <section className="mt-24 text-center bg-gradient-to-br from-muted/60 to-muted/40 dark:from-muted/40 dark:to-muted/20 rounded-2xl p-12 shadow-xl space-y-6 animate-fade-in">
         <h3 className="text-3xl font-extrabold tracking-tight">
           {t("home.cta.title")}
         </h3>
@@ -132,7 +161,7 @@ export default function Home() {
         >
           {t("home.cta.button")} <FaArrowRight className="ml-1" />
         </Link>
-      </section>
+      </section> */}
 
       <footer className="text-center border-t pt-6 text-sm text-muted-foreground mt-24 bg-muted/30 dark:bg-muted/10 rounded-t-xl">
         <p>&copy; 2025 611Study.ICU. {t("home.footer.text")}</p>
