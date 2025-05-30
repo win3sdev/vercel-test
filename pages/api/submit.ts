@@ -149,7 +149,7 @@ export default async function handler(
         },
       },
     });
-    // console.log(count);
+    console.log(count);
     if (count >= 3) {
       return res.status(429).json({
         success: false,

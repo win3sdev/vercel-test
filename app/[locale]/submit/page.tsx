@@ -67,7 +67,33 @@ export default function SubmitPage() {
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
+  const isValidTimeRange = (schoolStartTime: string, schoolEndTime: string) => {
+    console.log(123);
+
+    const timeToMinutes = (timeStr: string) => {
+      const [h, m] = timeStr.split(":").map(Number);
+      return h * 60 + m;
+    };
+
+    const startMinutes = timeToMinutes(schoolStartTime);
+    const endMinutes = timeToMinutes(schoolEndTime);
+    console.log(startMinutes);
+    console.log(endMinutes);
+
+    const isStartValid = startMinutes >= 60 && startMinutes <= 720; // 01:00 - 12:00
+    const isEndValid = endMinutes >= 720 && endMinutes <= 1439; // 12:00 - 23:59
+
+    return isStartValid && isEndValid;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
+    // 时间限制
+    const { schoolStartTime, schoolEndTime } = formData;
+    // if (!isValidTimeRange(schoolStartTime, schoolEndTime)) {
+    //   alert("请确认上学时间在01:00-12:00之间，放学时间在12:00-24:00之间。");
+    //   return;
+    // }
+
     e.preventDefault();
     setSubmitStatus("idle");
 
@@ -410,18 +436,42 @@ export default function SubmitPage() {
               <option value="" disabled>
                 {t("grade.placeholder")}
               </option>
-              <option value={t("grade.options.grade1")}>{t("grade.options.grade1")}</option>
-              <option value={t("grade.options.grade2")}>{t("grade.options.grade2")}</option>
-              <option value={t("grade.options.grade3")}>{t("grade.options.grade3")}</option>
-              <option value={t("grade.options.grade4")}>{t("grade.options.grade4")}</option>
-              <option value={t("grade.options.grade5")}>{t("grade.options.grade5")}</option>
-              <option value={t("grade.options.grade6")}>{t("grade.options.grade6")}</option>
-              <option value={t("grade.options.grade7")}>{t("grade.options.grade7")}</option>
-              <option value={t("grade.options.grade8")}>{t("grade.options.grade8")}</option>
-              <option value={t("grade.options.grade9")}>{t("grade.options.grade9")}</option>
-              <option value={t("grade.options.grade10")}>{t("grade.options.grade10")}</option>
-              <option value={t("grade.options.grade11")}>{t("grade.options.grade11")}</option>
-              <option value={t("grade.options.grade12")}>{t("grade.options.grade12")}</option>
+              <option value={t("grade.options.grade1")}>
+                {t("grade.options.grade1")}
+              </option>
+              <option value={t("grade.options.grade2")}>
+                {t("grade.options.grade2")}
+              </option>
+              <option value={t("grade.options.grade3")}>
+                {t("grade.options.grade3")}
+              </option>
+              <option value={t("grade.options.grade4")}>
+                {t("grade.options.grade4")}
+              </option>
+              <option value={t("grade.options.grade5")}>
+                {t("grade.options.grade5")}
+              </option>
+              <option value={t("grade.options.grade6")}>
+                {t("grade.options.grade6")}
+              </option>
+              <option value={t("grade.options.grade7")}>
+                {t("grade.options.grade7")}
+              </option>
+              <option value={t("grade.options.grade8")}>
+                {t("grade.options.grade8")}
+              </option>
+              <option value={t("grade.options.grade9")}>
+                {t("grade.options.grade9")}
+              </option>
+              <option value={t("grade.options.grade10")}>
+                {t("grade.options.grade10")}
+              </option>
+              <option value={t("grade.options.grade11")}>
+                {t("grade.options.grade11")}
+              </option>
+              <option value={t("grade.options.grade12")}>
+                {t("grade.options.grade12")}
+              </option>
             </select>
           </div>
 
@@ -442,6 +492,8 @@ export default function SubmitPage() {
               name="schoolStartTime"
               value={formData.schoolStartTime}
               onChange={handleChange}
+              min="01:00"
+              max="11:59"
               className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
@@ -464,6 +516,8 @@ export default function SubmitPage() {
               name="schoolEndTime"
               value={formData.schoolEndTime}
               onChange={handleChange}
+              min="12:00"
+              max="23:59"
               className="text-neutral-800 dark:text-white w-full px-4 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />

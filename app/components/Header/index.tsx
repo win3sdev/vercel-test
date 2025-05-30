@@ -114,22 +114,6 @@ export default function Header() {
               );
             })}
           </nav>
-
-          {/* 没有激活效果 */}
-          {/* <nav className="hidden md:flex items-center space-x-4 text-sm font-medium">
-            {navigationLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="group flex items-center space-x-2 px-4 py-2 rounded-lg font-semibold dark:text-white transition-all duration-200 hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-white"
-              >
-                <link.icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6" />
-                <span className="transition-colors duration-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                  {link.label}
-                </span>
-              </Link>
-            ))}
-          </nav> */}
         </div>
 
 
@@ -143,7 +127,6 @@ export default function Header() {
             <GithubIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
             <span className="sr-only">GitHub</span>
           </Link>
-          {/* <ThemeSwitcher /> */}
           <LanguageSwitcher />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
