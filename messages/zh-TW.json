@@ -184,12 +184,15 @@
     "statistics": "統計數據",
     "winterVacationDays": "寒假放假天數",
     "winterTuitionTotal": "寒假補課收費總額",
+    "download": "下載全部數據",
     "pagination": {
       "prev": "上一頁",
       "next": "下一頁",
       "page": "第 {page} 頁",
       "of": "共 {total} 頁",
-      "showing": "顯示 {start}-{end} 條，共 {total} 條"
+      "showing": "顯示 {start}-{end} 條，共 {total} 條",
+      "num": "頁碼",
+      "jump": "跳轉"
     },
     "filter": {
       "placeholder": "輸入篩選條件",

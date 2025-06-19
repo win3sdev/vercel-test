@@ -184,12 +184,15 @@
     "statistics": "Statistics",
     "winterVacationDays": "Winter Vacation Days",
     "winterTuitionTotal": "Winter Tuition Total Fee",
+    "download": "Download all data",
     "pagination": {
       "prev": "Previous Page",
       "next": "Next Page",
       "page": "Page {page}",
       "of": "of {total} pages",
-      "showing": "Showing {start}-{end} items, total {total} items"
+      "showing": "Showing {start}-{end} items, total {total} items",
+      "num": "page",
+      "jump": "Jump"
     },
     "filter": {
       "placeholder": "Enter Filter Conditions",

@@ -20,7 +20,6 @@ interface SchoolData {
   suicideCases: number;
   studentComments: string;
   createdAt: string;
-
 }
 
 interface PaginationData {
@@ -42,7 +41,6 @@ interface FilterState {
   monthlyHolidays: string;
   suicideCases: string;
   studentComments: string;
-
 }
 
 export default function DisplayPage() {
@@ -68,7 +66,7 @@ export default function DisplayPage() {
     weeklyStudyHours: "",
     monthlyHolidays: "",
     suicideCases: "",
-    studentComments: ""
+    studentComments: "",
   });
   const [mobileSearch, setMobileSearch] = useState("");
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
@@ -80,6 +78,13 @@ export default function DisplayPage() {
     monthlyHolidays: "",
     suicideCases: "",
   });
+
+  const setPage = (newPage: number) => {
+    setPagination((prev) => ({
+      ...prev,
+      currentPage: Math.min(Math.max(1, newPage), prev.totalPages),
+    }));
+  };
 
   // 构建查询参数
   const buildQueryString = (page: number) => {
@@ -138,7 +143,6 @@ export default function DisplayPage() {
       if (json.error) {
         throw new Error(json.error);
       }
-      console.log(json);
       setData(json.data);
       setPagination(json.pagination);
     } catch (err) {
@@ -158,6 +162,17 @@ export default function DisplayPage() {
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= pagination.totalPages) {
       fetchData(newPage);
+    }
+  };
+
+  const [jumpPage, setJumpPage] = useState("");
+  const handleJumpPage = () => {
+    const pageNum = Number(jumpPage);
+    if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= pagination.totalPages) {
+      handlePageChange(pageNum);
+      setJumpPage("");
+    } else {
+      alert(`请输入有效页码：1 ~ ${pagination.totalPages}`);
     }
   };
 
@@ -198,15 +213,52 @@ export default function DisplayPage() {
     pagination.total
   );
 
+  const downloadCSV = async () => {
+    try {
+      const res = await fetch("/api/schools?all=true");
+      const json = await res.json();
+      const allData = json.data;
+
+      if (!Array.isArray(allData) || allData.length === 0) {
+        alert("暂无可导出的数据");
+        return;
+      }
+
+      const headers = Object.keys(allData[0]);
+      const csvRows = [
+        headers.join(","),
+        ...allData.map((row) =>
+          headers
+            .map(
+              (field) =>
+                `"${(row[field] ?? "").toString().replace(/"/g, '""')}"`
+            )
+            .join(",")
+        ),
+      ];
+
+      const csvString = csvRows.join("\n");
+      const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "611Study.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      console.error("下载失败", err);
+    }
+  };
+  const totalPages = Math.ceil(pagination.total / pagination.pageSize);
   return (
     <div className="w-full py-8 px-2 max-w-[2920px] mx-auto dark:text-white">
       {/* <h1 className="text-3xl font-bold mb-8">{t("title")}</h1> */}
       <div className="mb-8 text-center dark:text-white">
         <h1 className="text-4xl font-bold">{t("title")}</h1>
         <div className="mb-6 p-4 rounded-lg border bg-muted/30 dark:bg-muted/10 text-sm text-muted-foreground">
-          <p>
-            {t("card")}
-          </p>
+          <p>{t("card")}</p>
         </div>
       </div>
 
@@ -602,7 +654,7 @@ export default function DisplayPage() {
               <button
                 onClick={() => handlePageChange(pagination.currentPage - 1)}
                 disabled={pagination.currentPage === 1}
-                className="px-3 py-1 rounded border border border-border dark:border-border-dark dark:border-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+                className="px-3 py-1 rounded border border-border dark:border-border-dark dark:border-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
               >
                 {t("pagination.prev")}
               </button>
@@ -613,9 +665,34 @@ export default function DisplayPage() {
               <button
                 onClick={() => handlePageChange(pagination.currentPage + 1)}
                 disabled={pagination.currentPage === pagination.totalPages}
-                className="px-3 py-1 rounded border border border-border dark:border-border-dark dark:border-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
+                className="px-3 py-1 rounded border  border-border dark:border-border-dark dark:border-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-500 dark:hover:border-blue-500 transition-colors"
               >
                 {t("pagination.next")}
+              </button>
+
+              {/* 跳转页输入框 */}
+              <div className="ml-4 flex items-center gap-2">
+                <input
+                  type="number"
+                  min={1}
+                  max={pagination.totalPages}
+                  value={jumpPage}
+                  onChange={(e) => setJumpPage(e.target.value)}
+                  placeholder={t("pagination.num")}
+                  className="w-16 rounded border border-gray-300 px-2 py-1 text-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                />
+                <button
+                  onClick={handleJumpPage}
+                  className="rounded bg-blue-500 px-3 py-1 text-white hover:bg-blue-600 transition-colors"
+                >
+                  {t("pagination.jump")}
+                </button>
+              </div>
+              <button
+                onClick={downloadCSV}
+                className="ml-2 px-3 py-1 rounded border border-border dark:border-border-dark dark:border-neutral-800 hover:border-blue-500 dark:hover:border-blue-500 transition-colors text-sm text-neutral-700 dark:text-neutral-200"
+              >
+                {t("download")}
               </button>
             </div>
           </div>

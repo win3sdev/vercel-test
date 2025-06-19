@@ -14,6 +14,7 @@ export default async function handler(
     const { query } = req;
     const page = parseInt((query.page as string) || "1");
     const pageSize = 25;
+    const isAll = query.all === "true";
 
     const where = {
       ...(query.province && {
@@ -54,11 +55,12 @@ export default async function handler(
       prisma.schoolSurvey.count({ where }),
       prisma.schoolSurvey.findMany({
         where,
-        take: pageSize,
-        skip: (page - 1) * pageSize,
-        // orderBy: {
-        //   createdAt: "desc",
-        // },
+        ...(isAll
+          ? {} // 不分页
+          : {
+              take: pageSize,
+              skip: (page - 1) * pageSize,
+            }),
         select: {
           id: true,
           province: true,
@@ -77,7 +79,6 @@ export default async function handler(
         },
       }),
     ]);
-    // console.log(data)
     return res.status(200).json({
       data,
       pagination: {
