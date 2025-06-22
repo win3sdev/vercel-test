@@ -10,6 +10,10 @@ import {
   FaBullseye,
   FaHeart,
   FaArrowRight,
+  FaPen,
+  FaChartBar,
+  FaEnvelope,
+  FaComments,
 } from "react-icons/fa";
 import { useLocale } from "next-intl";
 
@@ -19,7 +23,6 @@ export default function Home() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12 space-y-16 text-base text-foreground">
       <header className="text-center space-y-8 max-w-3xl mx-auto animate-fade-in px-4">
-        {/* 主标题 */}
         <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
           {t("site.title")} | $Li
         </h1>
@@ -40,21 +43,39 @@ export default function Home() {
             {t("home.cta.desc")}
           </p>
         </div>
+        <div className="flex flex-col items-center gap-6 pt-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href={`/${locale}/submit`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-600 to-blue-500 text-white font-semibold shadow-md hover:brightness-110 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-cyan-300 focus:ring-offset-2 dark:focus:ring-cyan-500 dark:focus:ring-offset-gray-900 transition-all dark:from-cyan-400 dark:to-blue-400"
+            >
+              <FaPen className="text-lg" />
+              {t("home.cta.submit")}
+              <FaArrowRight className="ml-1 text-sm" />
+            </Link>
 
-        <div className="flex flex-wrap justify-center gap-4 pt-2">
-          <Link
-            href={`/${locale}/submit`}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-500 text-white font-semibold shadow-md hover:brightness-110 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-cyan-400 focus:ring-offset-2 transition-transform dark:from-cyan-400 dark:to-blue-300"
-          >
-            {t("home.cta.submit")} <FaArrowRight className="ml-1" />
-          </Link>
+            <Link
+              href={`/${locale}/display`}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-teal-600 to-green-500 text-white font-semibold shadow-md hover:brightness-110 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300 focus:ring-offset-2 dark:focus:ring-green-500 dark:focus:ring-offset-gray-900 transition-all dark:from-teal-400 dark:to-green-400"
+            >
+              <FaChartBar className="text-lg" />
+              {t("home.cta.display")}
+              <FaArrowRight className="ml-1 text-sm" />
+            </Link>
+          </div>
 
-          <Link
-            href={`/${locale}/contact`}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-gray-500 to-amber-500 text-white font-semibold shadow-md hover:brightness-110 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-amber-400 focus:ring-offset-2 transition-transform dark:from-gray-400 dark:to-yellow-300"
-          >
-            {t("home.cta.contact")} <FaArrowRight className="ml-1" />
-          </Link>
+          <div className="pt-6 sm:pt-8 w-full max-w-sm">
+            <div className="rounded-2xl shadow-lg p-4 border border-gray-200 dark:border-gray-700 text-center transition-colors">
+              <Link
+                href={`/${locale}/contact`}
+                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold shadow-md hover:brightness-110 hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-pink-300 focus:ring-offset-2 dark:focus:ring-pink-500 dark:focus:ring-offset-gray-900 transition-all dark:from-purple-400 dark:to-pink-400"
+              >
+                <FaEnvelope className="text-lg" />
+                {t("home.cta.contact")}
+                <FaArrowRight className="ml-1 text-sm" />
+              </Link>
+            </div>
+          </div>
         </div>
       </header>
 
