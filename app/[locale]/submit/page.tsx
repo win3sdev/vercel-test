@@ -97,10 +97,11 @@ export default function SubmitPage() {
     e.preventDefault();
     setSubmitStatus("idle");
 
-    if (!recaptchaToken) {
-      toast.error("请先通过验证码验证", { position: "top-center" });
-      return;
-    }
+    // if (!recaptchaToken) {
+    //   toast.error("请先通过验证码验证", { position: "top-center" });
+    //   return;
+    // }
+
     setIsSubmitting(true);
     const trackData = mouseDataRef.current.join(";");
     try {
@@ -112,7 +113,7 @@ export default function SubmitPage() {
         body: JSON.stringify({
           ...formData,
           mouseTrack: trackData,
-          recaptchaToken,
+          // recaptchaToken,
         }),
       });
 
@@ -685,13 +686,13 @@ export default function SubmitPage() {
           </div>
 
           {/* reCAPTCHA 不做隐式状态 */}
-          <div className="pt-4">
+          {/* <div className="pt-4">
             <ReCAPTCHA
               sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
               ref={recaptchaRef}
               onChange={onRecaptchaChange}
             />
-          </div>
+          </div> */}
 
           {/* 提交按钮 */}
           <div className="pt-4">
